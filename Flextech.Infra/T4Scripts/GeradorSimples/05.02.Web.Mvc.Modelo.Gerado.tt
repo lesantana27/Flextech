@@ -1,0 +1,80 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#@ parameter name="TABELA__NOME" type="System.String" #>
+<# 
+	CarregarVariaveisDaSolucao();
+
+    string nomeDaTabelaPascalCase = ToPascalCase(TABELA__NOME);
+
+	string arquivo = @"Modelo\Gerado\" + nomeDaTabelaPascalCase + @".gerado.cs";
+#>
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: <#= arquivo #>
+Espaço de nome...: <#= VariaveisDaSolucao.EspacoDeNomeProjetoVisualizacaoWeb #>
+Classe...........: <#= nomeDaTabelaPascalCase #>.gerado.cs
+Descrição........: Modelo de dados para a Web
+==================================================================================
+Criação..........: 22/01/2018 - Lessandro Santana
+Alteração........: 27/05/2019 - Lessandro Santana
+==================================================================================
+Gerado em........: <#= DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") #>
+
+Arquivo gerado automaticamente pelo Replicador da Flextech.
+
+NÃO EDITE ESTE ARQUIVO.
+TODAS AS ALTERAÇÕES FEITAS AQUI PODERÃO SER PERDIDAS.
+==================================================================================
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace <#= VariaveisDaSolucao.EspacoDeNomeProjetoVisualizacaoWeb #>.Modelo
+{
+    public partial class <#= nomeDaTabelaPascalCase #> : Flextech.Infra.Web.Base.ModeloBase
+    {
+        public <#= VariaveisDaSolucao.EspacoDeNomeProjetoRegistroAtivo #>.<#= TABELA__NOME #> <#= nomeDaTabelaPascalCase #>RegistroAtivo { get; set; }
+
+        public <#= nomeDaTabelaPascalCase #>(string nomeComputador, string nomeUsuario, string enderecoIP) : base(nomeComputador, nomeUsuario, enderecoIP)
+        {
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo = new <#= VariaveisDaSolucao.EspacoDeNomeProjetoRegistroAtivo #>.<#= TABELA__NOME #>(nomeComputador, nomeUsuario, enderecoIP);
+        }
+
+        public void CarregarTodos()
+        {
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.ColecaoDeErros.Clear();
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.Parametros.Clear();
+
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.SelecionarDaVisualizacao(this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.Parametros);
+
+            base.ColecaoDeErros = this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.ColecaoDeErros;
+        }
+
+        public void SelecionarDaVisualizacaoPorID(int id)
+        {
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.ColecaoDeErros.Clear();
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.Parametros.Clear();
+
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.Parametros.Add("ID", id);
+
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.SelecionarDaVisualizacao(this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.Parametros);
+
+            base.ColecaoDeErros = this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.ColecaoDeErros;
+        }
+
+        public void SalvarRegistroDaVisualizacao()
+        {
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.ColecaoDeErros.Clear();
+
+            this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.SalvarRegistroDaVisualizacao(recarregarRegistroDaVisualizacao: false);
+
+            base.ColecaoDeErros = this.<#= nomeDaTabelaPascalCase #>RegistroAtivo.ColecaoDeErros;
+        }
+    }
+}

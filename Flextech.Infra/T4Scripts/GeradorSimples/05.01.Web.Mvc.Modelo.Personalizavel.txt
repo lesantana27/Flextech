@@ -1,0 +1,27 @@
+﻿
+
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: Modelo\Usuario.cs
+Espaço de nome...: Flextech.Calculador.Rendimento.Web
+Classe...........: Usuario.cs
+Descrição........: Modelo de dados para a Web
+==================================================================================
+Criação..........: 22/01/2018 - Lessandro Santana
+Alteração........: 27/05/2019 - Lessandro Santana
+==================================================================================
+Gerado em........: 27/05/2019 12:21:22
+==================================================================================
+*/
+
+using System;
+
+namespace Flextech.Calculador.Rendimento.Web.Modelo
+{
+    public partial class Usuario
+    {
+        // Colocar aqui a programação personalizada.
+    }
+}

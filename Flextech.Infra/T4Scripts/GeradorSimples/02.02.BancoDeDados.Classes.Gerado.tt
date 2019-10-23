@@ -1,0 +1,271 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Flextech.Infra.dll" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#@ parameter name="TABELA__NOME" type="System.String" #>
+<# 
+	CarregarVariaveisDaSolucao();
+
+    Flextech.Infra.T4Scripts.Database.SqlServerDatabase DB = new Flextech.Infra.T4Scripts.Database.SqlServerDatabase(VariaveisDaSolucao.ConexaoBaseDeDados);
+    Flextech.Infra.T4Scripts.Database.Table table;
+    Flextech.Infra.T4Scripts.Database.Table view;
+
+	string arquivo = @"BancoDeDados\Gerado\" + TABELA__NOME + @".gerado.cs";
+
+	string nomeDaClasseTabela = TABELA__NOME + "_TB";
+	string nomeDaClasseVisualizacao = TABELA__NOME + "_VW";
+
+    StringBuilder tabela__propriedades__todas = new StringBuilder();
+    StringBuilder tabela__propriedades__inicializar_propriedades_com_valores_padrao = new StringBuilder();
+    StringBuilder tabela__propriedades__dicionario = new StringBuilder();
+    StringBuilder tabela__propriedades__campo_alterado_pelo_usuario = new StringBuilder();
+    StringBuilder tabela__propriedades__valor_no_banco_de_dados = new StringBuilder();
+    StringBuilder tabela__propriedades__valor_editado_pelo_usuario = new StringBuilder();
+    StringBuilder tabela__existem_campos_editados = new StringBuilder();
+    StringBuilder tabela__marcar_registros_carregados_do_banco_de_dados = new StringBuilder();
+
+    StringBuilder visualizacao__propriedades__todas = new StringBuilder();
+    StringBuilder visualizacao__propriedades__inicializar_propriedades_com_valores_padrao = new StringBuilder();
+
+    string nomeDoCampo;
+    string tipoDoCampoCSharp;
+    string tipoDoCampoSqlServer;
+    bool campoExisteNaTabela = false;
+
+    table = DB.Tables.Find(a => a.Name == TABELA__NOME);
+    view = DB.Views.Find(a => a.Name == nomeDaClasseVisualizacao);
+    foreach (Flextech.Infra.T4Scripts.Database.Column column in view.Columns)
+    {
+        
+		nomeDoCampo = column.Name;
+        tipoDoCampoCSharp = column.GetTypeCSharp();
+		tipoDoCampoSqlServer = column.Type;
+        campoExisteNaTabela = false;
+
+        foreach (Flextech.Infra.T4Scripts.Database.Column columnTable in table.Columns)
+        {
+            if (columnTable.Name == column.Name)
+            {
+                campoExisteNaTabela = true;
+                break;
+            }
+        }
+
+        if (campoExisteNaTabela)
+        {
+                                        tabela__propriedades__todas.AppendLine("        [DataMember]");
+            if (column.Name == "ID") {  tabela__propriedades__todas.AppendLine("        public override " + tipoDoCampoCSharp + " " + nomeDoCampo + " { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___" + nomeDoCampo + "; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___" + nomeDoCampo + ", value); } }"); }
+            else                     {  tabela__propriedades__todas.AppendLine("        public " + tipoDoCampoCSharp + " " + nomeDoCampo + " { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___" + nomeDoCampo + "; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___" + nomeDoCampo + ", value); } }"); }
+                                        tabela__propriedades__todas.AppendLine("");
+
+            tabela__propriedades__dicionario.AppendLine("            dic.Add(\"" + nomeDoCampo + "\", this." + nomeDoCampo + ");");
+        
+            tabela__propriedades__campo_alterado_pelo_usuario.AppendLine("            public bool " + nomeDoCampo + "___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___" + nomeDoCampo + " != ValorNoBancoDeDados___" + nomeDoCampo + "; } }");
+        
+            tabela__propriedades__valor_no_banco_de_dados.AppendLine("            public " + tipoDoCampoCSharp + " ValorNoBancoDeDados___" + nomeDoCampo + ";");
+        
+            tabela__propriedades__valor_editado_pelo_usuario.AppendLine("            public " + tipoDoCampoCSharp + " ValorEditadoPeloUsuario___" + nomeDoCampo + ";");
+
+            if (tabela__existem_campos_editados.Length > 0) tabela__existem_campos_editados.Append(" || ");
+            tabela__existem_campos_editados.Append(nomeDoCampo + "___CampoAlteradoPeloUsuario");
+
+            tabela__marcar_registros_carregados_do_banco_de_dados.AppendLine("                ValorNoBancoDeDados___" + nomeDoCampo + " = ValorEditadoPeloUsuario___" + nomeDoCampo + ";");
+        
+            if (column.Name == "REGISTRO_CRIADO_DATA" || column.Name == "REGISTRO_ATUALIZADO_DATA")
+            {
+                tabela__propriedades__inicializar_propriedades_com_valores_padrao.AppendLine("            this." + nomeDoCampo + " = DateTime.Now;");
+            }
+            else
+            {
+                tabela__propriedades__inicializar_propriedades_com_valores_padrao.AppendLine("            this." + nomeDoCampo + " = " + ObterValorPadraoCSharp(tipoDoCampoSqlServer) + ";");
+            }
+        }
+        else
+        {
+            visualizacao__propriedades__todas.AppendLine("        [DataMember]");
+            visualizacao__propriedades__todas.AppendLine("        public " + tipoDoCampoCSharp + " " + nomeDoCampo + " { get { return this._" + nomeDoCampo + "; } set { ColocarNoCampo(ref this._" + nomeDoCampo + ", value); } }");
+            visualizacao__propriedades__todas.AppendLine("        private " + tipoDoCampoCSharp + " _" + nomeDoCampo + ";");
+            visualizacao__propriedades__todas.AppendLine("");
+
+            visualizacao__propriedades__inicializar_propriedades_com_valores_padrao.AppendLine("            this." + nomeDoCampo + " = " + ObterValorPadraoCSharp(tipoDoCampoSqlServer) + ";");			
+        }
+
+	}
+
+#>
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: <#= arquivo #>
+Espaço de nome...: <#= VariaveisDaSolucao.EspacoDeNomeProjetoBancoDeDados #>
+Classe...........: <#= nomeDaClasseTabela #> e <#= nomeDaClasseVisualizacao #>
+Descrição........: Classe <#= nomeDaClasseTabela #> e <#= nomeDaClasseVisualizacao #> Geradas. 
+==================================================================================
+Criação..........: 22/01/2018 - Lessandro Santana
+Alteração........: 17/09/2019 - Lessandro Santana
+==================================================================================
+Gerado em........: <#= DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") #>
+
+Arquivo gerado automaticamente pelo Replicador da Flextech.
+
+NÃO EDITE ESTE ARQUIVO.
+TODAS AS ALTERAÇÕES FEITAS AQUI PODERÃO SER PERDIDAS.
+==================================================================================
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+
+namespace <#= VariaveisDaSolucao.EspacoDeNomeProjetoBancoDeDados #>
+{
+    [DataContract]
+    public partial class <#= nomeDaClasseTabela #> : Flextech.Infra.Base.RegistroBase
+    {
+		#region Propriedades
+
+<#= tabela__propriedades__todas #>
+
+		[IgnoreDataMember]
+        [XmlIgnoreAttribute]
+		public ControleInternoDosCamposDaTabela ControleDosCamposDaTabela { get { if (_ControleDosCamposDaTabela == null) _ControleDosCamposDaTabela = new ControleInternoDosCamposDaTabela(); return this._ControleDosCamposDaTabela; } set { this._ControleDosCamposDaTabela = value; } }
+        private ControleInternoDosCamposDaTabela _ControleDosCamposDaTabela;
+
+		#endregion Propriedades
+
+		public <#= nomeDaClasseTabela #>()
+		{
+            InicializarPropriedadesComValoresPadrao(marcarRegistrosCarregadosDoBancoDeDados: false);
+
+            this.REGISTRO_CRIADO_USUARIO = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+            this.REGISTRO_CRIADO_IP = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+            this.REGISTRO_CRIADO_COMPUTADOR = Flextech.Infra.Estatico.Sistema.NomeComputador;
+
+            this.REGISTRO_ATUALIZADO_USUARIO = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+            this.REGISTRO_ATUALIZADO_IP = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+            this.REGISTRO_ATUALIZADO_COMPUTADOR = Flextech.Infra.Estatico.Sistema.NomeComputador;
+
+            MarcarRegistrosCarregadosDoBancoDeDados();
+		}
+
+        public <#= nomeDaClasseTabela #>(string nomeComputador, string nomeUsuario, string enderecoIP)
+        {
+            InicializarPropriedadesComValoresPadrao(marcarRegistrosCarregadosDoBancoDeDados: false);
+
+            this.REGISTRO_CRIADO_USUARIO = nomeUsuario;
+            this.REGISTRO_CRIADO_IP = enderecoIP;
+            this.REGISTRO_CRIADO_COMPUTADOR = nomeComputador;
+
+            this.REGISTRO_ATUALIZADO_USUARIO = nomeUsuario;
+            this.REGISTRO_ATUALIZADO_IP = enderecoIP;
+            this.REGISTRO_ATUALIZADO_COMPUTADOR = nomeComputador;
+
+            MarcarRegistrosCarregadosDoBancoDeDados();
+        }
+
+        public override void MarcarRegistrosCarregadosDoBancoDeDados()
+        {
+            this.ControleDosCamposDaTabela.MarcarRegistrosCarregadosDoBancoDeDados();
+        }
+
+        public override bool ExistemCamposEditados() 
+        {
+            return this.ControleDosCamposDaTabela.ExistemCamposEditados();
+        }
+
+        public override void InicializarPropriedadesComValoresPadrao(bool marcarRegistrosCarregadosDoBancoDeDados = true) 
+        {
+<#= tabela__propriedades__inicializar_propriedades_com_valores_padrao #>
+			
+			if (marcarRegistrosCarregadosDoBancoDeDados) MarcarRegistrosCarregadosDoBancoDeDados();
+		}
+
+        public override Dictionary<string, object> ObterDicionarioDePropriedades() 
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+
+<#= tabela__propriedades__dicionario #>
+
+            if (this.ID == 0)
+            {
+                dic["REGISTRO_CRIADO_DATA"] = DateTime.Now;
+                dic["REGISTRO_CRIADO_USUARIO"] = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+                dic["REGISTRO_CRIADO_IP"] = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+                dic["REGISTRO_CRIADO_COMPUTADOR"] = Flextech.Infra.Estatico.Sistema.NomeComputador;
+            }
+            else
+            {
+                dic["REGISTRO_CRIADO_DATA"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_DATA;
+                dic["REGISTRO_CRIADO_USUARIO"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_USUARIO;
+                dic["REGISTRO_CRIADO_IP"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_IP;
+                dic["REGISTRO_CRIADO_COMPUTADOR"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_COMPUTADOR;
+            }
+
+            dic["REGISTRO_ATUALIZADO_DATA"] = DateTime.Now;
+            dic["REGISTRO_ATUALIZADO_USUARIO"] = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+            dic["REGISTRO_ATUALIZADO_IP"] = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+            dic["REGISTRO_ATUALIZADO_COMPUTADOR"] = Flextech.Infra.Estatico.Sistema.NomeComputador;
+            
+            return dic;
+        }
+		
+		#region Controle Interno dos Campos da Tabela
+
+		public class ControleInternoDosCamposDaTabela
+        {
+			#region Propriedades booleanas
+
+<#= tabela__propriedades__campo_alterado_pelo_usuario #>
+
+			#endregion Propriedades booleanas
+
+			#region Campos de valores do banco de dados
+
+<#= tabela__propriedades__valor_no_banco_de_dados #>
+
+			#endregion Campos de valores do banco de dados
+
+			#region Campos de valores editados pelo usuario
+
+<#= tabela__propriedades__valor_editado_pelo_usuario #>
+
+			#endregion Campos de valores editados pelo usuario
+
+            public bool ExistemCamposEditados() // ou o status NOVO / CARREGADO_DO_BANCO / ALTERADO / SALVO
+            {
+                if (<#= tabela__existem_campos_editados #>)
+                    return true;
+
+                return false;
+            }
+
+            public void MarcarRegistrosCarregadosDoBancoDeDados()
+            {
+<#= tabela__marcar_registros_carregados_do_banco_de_dados #>
+            }
+        }
+
+		#endregion Controle Interno dos Campos da Tabela
+    }
+
+    [DataContract]
+    public partial class <#= nomeDaClasseVisualizacao #> : <#= VariaveisDaSolucao.EspacoDeNomeProjetoBancoDeDados #>.<#= nomeDaClasseTabela #>
+    {
+		#region Propriedades
+		
+<#= visualizacao__propriedades__todas #>
+    
+		#endregion Propriedades
+		
+        public override void InicializarPropriedadesComValoresPadrao(bool marcarRegistrosCarregadosDoBancoDeDados = true) 
+        {
+            base.InicializarPropriedadesComValoresPadrao(marcarRegistrosCarregadosDoBancoDeDados: marcarRegistrosCarregadosDoBancoDeDados);
+
+<#= visualizacao__propriedades__inicializar_propriedades_com_valores_padrao #>
+			
+			if (marcarRegistrosCarregadosDoBancoDeDados) MarcarRegistrosCarregadosDoBancoDeDados();
+		}
+    }
+}

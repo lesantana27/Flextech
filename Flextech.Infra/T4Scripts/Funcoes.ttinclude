@@ -1,0 +1,392 @@
+﻿<#@ include file="Imports.ttinclude" #>
+<#@ parameter name="NOME_SOLUCAO" type="System.String" #>
+<#+ 
+    
+    // To cause a failure.......: ##
+    // To disable the failure...: //##
+    //##
+
+#region Variáveis
+         
+    public VariaveisDaSolucaoClass VariaveisDaSolucao { get { if (this._VariaveisDaSolucao == null) this._VariaveisDaSolucao = new VariaveisDaSolucaoClass(); return this._VariaveisDaSolucao;} set { this._VariaveisDaSolucao = value; } }
+    private VariaveisDaSolucaoClass _VariaveisDaSolucao; 
+
+    public enum NomeSolucao
+    {
+        NENHUM,
+        CALCULADOR_RENDIMENTO
+    }
+
+    public class VariaveisDaSolucaoClass
+    {
+        // Conexão
+        public string ConexaoBaseDeDados                        { get; set; }
+
+
+        // Solução
+        public string NomeSolucao                               { get; set; }
+        public string DiretorioSolucao                          { get; set; }
+        public string EspacoDeNomeSolucao                       { get; set; }
+
+
+        // Metadados
+        public string NomeProjetoMetadados                      { get; set; }
+        public string DiretorioProjetoMetadados                 { get; set; }
+        public string EspacoDeNomeProjetoMetadados              { get; set; }
+
+
+        // Banco de dados
+        public string NomeDoBancoDeDados                        { get; set; }
+        public string NomeProjetoBancoDeDados                   { get; set; }
+        public string DiretorioProjetoBancoDeDados              { get; set; }
+        public string DiretorioProjetoBancoDeDadosScripts       { get; set; }
+        public string EspacoDeNomeProjetoBancoDeDados           { get; set; }
+
+
+        // Registro Ativo
+        public string NomeProjetoRegistroAtivo                  { get; set; }
+        public string DiretorioProjetoRegistroAtivo             { get; set; }
+        public string EspacoDeNomeProjetoRegistroAtivo          { get; set; }
+        
+
+        // Visualização Web
+        public string NomeProjetoVisualizacaoWeb                { get; set; }
+        public string DiretorioProjetoVisualizacaoWeb           { get; set; }
+        public string EspacoDeNomeProjetoVisualizacaoWeb        { get; set; }
+
+
+        // Stored Procedures
+        public string ProcedimentoArmazenadoPrefixo             { get; set; }
+        public string ProcedimentoArmazenadoExcluirPorID        { get; set; }
+        public string ProcedimentoArmazenadoSalvar              { get; set; }
+        public string ProcedimentoArmazenadoSelecionar          { get; set; }
+
+
+
+    }
+
+
+    public void CarregarVariaveisDaSolucao()
+    {
+        CarregarVariaveisDaSolucao(NOME_SOLUCAO);
+    }
+
+    public void CarregarVariaveisDaSolucao(string nomeSolucao)
+    {
+        switch (nomeSolucao)
+        {
+            case "CALCULADOR_RENDIMENTO":
+                CarregarVariaveisDaSolucao(NomeSolucao.CALCULADOR_RENDIMENTO);
+                break;
+            default:
+                break;
+        }
+    }
+    
+
+    public void CarregarVariaveisDaSolucao(NomeSolucao nomeSolucao)
+    {
+        switch (nomeSolucao)
+        {
+            case NomeSolucao.CALCULADOR_RENDIMENTO:
+                    
+                // Conexão
+                VariaveisDaSolucao.ConexaoBaseDeDados                       = @"Server=.\SQL2017;Database=CALCULADOR_RENDIMENTO;User Id=sa;Password=lls1;";
+
+
+                // Solução
+                VariaveisDaSolucao.NomeSolucao                              = @"CALCULADOR.RENDIMENTO";    
+                VariaveisDaSolucao.DiretorioSolucao                         = ObterDiretorioDaSolucao();
+                VariaveisDaSolucao.EspacoDeNomeSolucao                      = @"Flextech.Calculador.Rendimento";
+    
+
+                // Metadados
+                VariaveisDaSolucao.NomeProjetoMetadados                     = @"Flextech.Calculador.Rendimento";
+                VariaveisDaSolucao.DiretorioProjetoMetadados                = ObterDiretorioDaSolucao() + @"Flextech.Calculador.Rendimento\Metadados\";
+                VariaveisDaSolucao.EspacoDeNomeProjetoMetadados             = @"Flextech.Calculador.Rendimento.Metadados";
+
+
+                // Banco de dados
+                VariaveisDaSolucao.NomeDoBancoDeDados                       = @"CALCULADOR_RENDIMENTO";
+                VariaveisDaSolucao.NomeProjetoBancoDeDados                  = @"Flextech.Calculador.Rendimento";
+                VariaveisDaSolucao.DiretorioProjetoBancoDeDados             = ObterDiretorioDaSolucao() + @"Flextech.Calculador.Rendimento\BancoDeDados\";
+                VariaveisDaSolucao.DiretorioProjetoBancoDeDadosScripts      = ObterDiretorioDaSolucao() + @"Flextech.Calculador.Rendimento\BancoDeDadosScripts\";
+                VariaveisDaSolucao.EspacoDeNomeProjetoBancoDeDados          = @"Flextech.Calculador.Rendimento.BancoDeDados";
+                
+                
+                // Registro Ativo
+                VariaveisDaSolucao.NomeProjetoRegistroAtivo                 = @"Flextech.Calculador.Rendimento";
+                VariaveisDaSolucao.DiretorioProjetoRegistroAtivo            = ObterDiretorioDaSolucao() + @"Flextech.Calculador.Rendimento\RegistroAtivo\";
+                VariaveisDaSolucao.EspacoDeNomeProjetoRegistroAtivo         = @"Flextech.Calculador.Rendimento.RegistroAtivo";
+        
+
+                // Visualização Web
+                VariaveisDaSolucao.NomeProjetoVisualizacaoWeb               = @"Flextech.Calculador.Rendimento.Web";
+                VariaveisDaSolucao.DiretorioProjetoVisualizacaoWeb          = ObterDiretorioDaSolucao() + @"Flextech.Calculador.Rendimento.Web\";
+                VariaveisDaSolucao.EspacoDeNomeProjetoVisualizacaoWeb       = @"Flextech.Calculador.Rendimento.Web";
+
+                break;
+            default:
+                break;
+        }
+
+        // Stored Procedures
+        VariaveisDaSolucao.ProcedimentoArmazenadoPrefixo                    = @"zusp__";
+        VariaveisDaSolucao.ProcedimentoArmazenadoExcluirPorID               = @"__excluir_por_id"; 
+        VariaveisDaSolucao.ProcedimentoArmazenadoSalvar                     = @"__salvar";
+        VariaveisDaSolucao.ProcedimentoArmazenadoSelecionar                 = @"__selecionar";
+    }
+
+
+#endregion Variáveis
+
+#region Funções
+
+
+	public EnvDTE.DTE VisualStudio				{ get { return (this.Host as IServiceProvider).GetService(typeof(EnvDTE.DTE)) as EnvDTE.DTE; } }
+	public EnvDTE.Project VisualStudioProject	{ get { return VisualStudio.Solution.FindProjectItem(this.Host.TemplateFile).ContainingProject as EnvDTE.Project; } }
+       
+    public string ObterDiretorioDaSolucao()
+    {
+        return System.IO.Path.GetDirectoryName(VisualStudio.Solution.FullName) + @"\";
+    }
+    
+    public string ObterDiretorioDoProjeto()
+    {
+        return System.IO.Path.GetDirectoryName(VisualStudioProject.FullName) + @"\";
+    }
+    
+    public DataTable ExecutarConsulta(string consulta, string conexao)
+    {
+        DataTable dataTable = new DataTable();
+        using (SqlConnection sqlConnection = new SqlConnection(conexao))
+        {
+            sqlConnection.Open();
+            using (SqlCommand sqlCommand = new SqlCommand(consulta, sqlConnection))
+            {
+                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand))
+                {
+                    sqlDataAdapter.Fill(dataTable);
+                }
+            }
+        }
+        return dataTable;
+    }
+
+    public string ObterTipoCSharp(string tipoSqlServer)
+    {
+        switch (tipoSqlServer.ToLower())
+        {
+            case "bigint":
+                return "Int64";
+            case "binary":
+            case "image":
+            case "varbinary":
+                return "byte[]";
+            case "bit":
+                return "bool";
+            case "char":
+                return "char";
+            case "datetime":
+            case "smalldatetime":
+                return "DateTime";
+            case "decimal":
+            case "money":
+            case "numeric":
+                return "decimal";
+            case "float":
+                return "double";
+            case "int":
+                return "int";
+            case "nchar":
+            case "nvarchar":
+            case "text":
+            case "varchar":
+            case "xml":
+                return "string";
+            case "real":
+                return "single";
+            case "smallint":
+                return "Int16";
+            case "tinyint":
+                return "byte";
+            case "uniqueidentifier":
+                return "Guid";
+
+            default:
+                return @"ObterTipoCSharp(): "+ tipoSqlServer +" não implementado.";
+        }
+    }
+
+    public string ObterValorPadraoCSharp(string tipoSqlServer)
+    {
+        switch (tipoSqlServer.ToLower())
+        {
+            case "bigint":
+            case "decimal":
+            case "money":
+            case "numeric":
+            case "float":
+            case "int":
+            case "real":
+            case "smallint":
+            case "tinyint":
+                return "0";
+
+            case "binary":
+            case "image":
+            case "varbinary":
+                return "Não tem default";
+
+            case "bool":
+            case "bit":
+                return "false";
+
+            case "char":
+                return "''";
+
+            case "datetime":
+            case "smalldatetime":
+                return "new DateTime(2000, 1, 1)";
+
+            case "string":
+            case "nchar":
+            case "nvarchar":
+            case "text":
+            case "varchar":
+            case "xml":
+                return "\"\"";
+
+            case "guid":
+            case "uniqueidentifier":
+                return "Guid.NewGuid()";
+
+            default:
+                return @"ObterValorPadraoCSharp(): "+ tipoSqlServer +" não implementado. ";
+        }
+    }
+
+    public string ObterValorFormatadoCSharp(string tipoSqlServer, string valor)
+    {
+        string retorno = "ObterValorFormatadoCSharp(): " + tipoSqlServer + " não implementado. ";
+
+        switch (tipoSqlServer.ToLower())
+        {
+            case "bigint":
+            case "decimal":
+            case "money":
+            case "numeric":
+            case "float":
+            case "int":
+            case "real":
+            case "smallint":
+            case "tinyint":
+                retorno = valor;
+                break;
+
+            case "binary":
+            case "image":
+            case "varbinary":
+            case "bit":
+                retorno = valor.ToLower();
+                break;
+
+            case "smalldatetime":
+            case "datetime":
+                string val = new System.String(valor.Where(char.IsDigit).ToArray());
+                if (val.Length != 14) { break; }
+                retorno =  "new DateTime(" + Convert.ToInt32(val.Substring(4, 4)) + ", " + Convert.ToInt32(val.Substring(2, 2)) + ", " + Convert.ToInt32(val.Substring(0, 2)) + ", " + Convert.ToInt32(val.Substring(8, 2)) + ", " + Convert.ToInt32(val.Substring(10, 2)) + ", " + Convert.ToInt32(val.Substring(12, 2)) + ")";
+                break;
+
+            case "string":
+            case "char":
+            case "nvarchar":
+            case "text":
+            case "varchar":
+            case "xml":
+                retorno = "\"" + valor + "\"";
+                break;
+
+            case "uniqueidentifier":
+                retorno = "new Guid(\"" + valor + "\")";
+                break;
+
+            default:
+                break;
+        }
+
+        return retorno;
+    }
+
+    public string FormatarTipoSqlServer(string tipoSqlServer, string tamanhoDoCampo)
+    {
+        switch (tipoSqlServer.ToLower())
+        {
+            case "numeric":
+            case "float":
+                break;
+            case "char":
+            case "nchar":
+            case "nvarchar":
+            case "varchar":
+            case "xml":
+                return "[" + tipoSqlServer + "] (" + tamanhoDoCampo + ")";
+            default:
+                break;
+        }
+
+        return "[" + tipoSqlServer + "]";
+    }
+
+    public void ProcessTemplate(string templateFileName, string outputFileName)
+    {
+        string template = System.IO.File.ReadAllText(Host.ResolvePath(templateFileName));
+        Microsoft.VisualStudio.TextTemplating.Engine engine = new Microsoft.VisualStudio.TextTemplating.Engine();
+        string output = engine.ProcessTemplate(template, Host);  
+
+        System.IO.File.WriteAllText(outputFileName, output);
+    }
+
+    public void ProcessTemplate___ORIGINAL___(string templateFileName, string outputFileName)
+    {
+        string templateDirectory = System.IO.Path.GetDirectoryName(Host.TemplateFile);
+        string outputFilePath = System.IO.Path.Combine(templateDirectory, outputFileName);  
+
+        string template = System.IO.File.ReadAllText(Host.ResolvePath(templateFileName));
+        Microsoft.VisualStudio.TextTemplating.Engine engine = new Microsoft.VisualStudio.TextTemplating.Engine();
+        string output = engine.ProcessTemplate(template, Host);  
+
+        System.IO.File.WriteAllText(outputFilePath, output);
+    }
+    
+    public string ToPascalCase(string s)
+    {
+        var words = s.Split(new[] { '-', '_' }, StringSplitOptions.RemoveEmptyEntries)
+                     .Select(word => word.Substring(0, 1).ToUpper() + 
+                                     word.Substring(1).ToLower());
+
+        var result = String.Concat(words);
+        return result;
+    }
+
+#endregion Funções
+        
+    // public void CheckoutFileIfRequired(string fileName)
+    // {
+    //     if (this.VisualStudio.SourceControl.IsItemUnderSCC(fileName) && !this.VisualStudio.SourceControl.IsItemCheckedOut(fileName))
+    //     {
+    //         this.VisualStudio.SourceControl.CheckOutItem(fileName);
+    //     }
+    // }
+    // 
+    // public void AddFileToProjectIfRequired(string fileName)
+    // {
+    //     return;
+    // 
+      //     if (!this.VisualStudio.SourceControl.IsItemUnderSCC(fileName))
+    //     {
+    //         VisualStudioProject.ProjectItems.AddFromFile(fileName);
+    //     }        
+    // }
+
+#>

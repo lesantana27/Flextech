@@ -1,0 +1,152 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Flextech.Infra.dll" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#  
+	Engine engine = new Engine();
+	ITextTemplatingSession iTextTemplatingSession = new TextTemplatingSession();
+	ITextTemplatingSessionHost iTextTemplatingSessionHost = (ITextTemplatingSessionHost) this.Host;
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	iTextTemplatingSession["NOME_SOLUCAO"] = NomeSolucao.CALCULADOR_RENDIMENTO.ToString();
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	CarregarVariaveisDaSolucao();
+
+	Flextech.Infra.T4Scripts.Database.SqlServerDatabase DB = new Flextech.Infra.T4Scripts.Database.SqlServerDatabase(VariaveisDaSolucao.ConexaoBaseDeDados);
+
+    string nomeDaTabelaPascalCase; 
+    string nomeDoCampoPascalCase; 
+
+    foreach (Flextech.Infra.T4Scripts.Database.Table table in DB.Tables)
+    {
+        nomeDaTabelaPascalCase = ToPascalCase(table.Name);
+#>
+
+
+#########################################################################################################################################
+<#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #>
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.<#= nomeDaTabelaPascalCase #>
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) <#= nomeDaTabelaPascalCase #>" : "Editar <#= nomeDaTabelaPascalCase #>";
+}
+
+<div class="content-heading">
+    <div>
+        <#= nomeDaTabelaPascalCase #>s
+        <small>Cadastro geral de <#= nomeDaTabelaPascalCase #>s</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de <#= nomeDaTabelaPascalCase #>s</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/<#= nomeDaTabelaPascalCase #>/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+<#      foreach (Flextech.Infra.T4Scripts.Database.Column column in table.Columns)
+        {
+            if (column.Name == "ID")                                { continue; }
+            if (column.Name == "TOKEN")                             { continue; }
+            if (column.Name == "REGISTRO_CRIADO_DATA")              { continue; }
+            if (column.Name == "REGISTRO_CRIADO_USUARIO")           { continue; }
+            if (column.Name == "REGISTRO_CRIADO_IP")                { continue; }
+            if (column.Name == "REGISTRO_CRIADO_COMPUTADOR")        { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_DATA")          { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_USUARIO")       { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_IP")            { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_COMPUTADOR")    { continue; }
+            if (column.Name == "REGISTRO_EXCLUIDO")                 { continue; }
+
+            nomeDoCampoPascalCase = ToPascalCase(column.Name);
+#>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right"><#= nomeDoCampoPascalCase #>:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="<#= column.Name.ToLower() #>" name="<#= column.Name.ToLower() #>" placeholder="<#= nomeDoCampoPascalCase #>" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.<#= column.Name #>">
+                </div>
+            </div>
+<#      }	 #>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/<#= nomeDaTabelaPascalCase #>/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+<#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #>
+#########################################################################################################################################
+
+<#    }#>
+
+
+
+

@@ -1,0 +1,35 @@
+﻿
+
+ 
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Negocio
+Arquivo..........: RegistroAtivo\USUARIO.cs
+Espaço de nome...: Flextech.Calculador.Rendimento.RegistroAtivo
+Classe...........: USUARIO
+Descrição........: Classe USUARIO personalizada. 
+==================================================================================
+Criação..........: 24/01/2018 - Lessandro Santana
+Alteração........: 10/05/2018 - Lessandro Santana
+==================================================================================
+Gerado em........: 10/05/2019 12:17:39
+==================================================================================
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Flextech.Calculador.Rendimento.RegistroAtivo
+{
+    public partial class USUARIO 
+    {
+        public USUARIO(string nomeComputador, string nomeUsuario, string enderecoIP) : base(nomeComputador, nomeUsuario, enderecoIP)
+        {
+
+        }
+
+        // Colocar aqui a programação personalizada.
+    }
+}

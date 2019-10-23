@@ -1,0 +1,520 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Flextech.Infra.dll" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#  
+	Engine engine = new Engine();
+	ITextTemplatingSession iTextTemplatingSession = new TextTemplatingSession();
+	ITextTemplatingSessionHost iTextTemplatingSessionHost = (ITextTemplatingSessionHost) this.Host;
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	iTextTemplatingSession["NOME_SOLUCAO"] = NomeSolucao.CALCULADOR_RENDIMENTO.ToString();
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	CarregarVariaveisDaSolucao();
+
+	Flextech.Infra.T4Scripts.Database.SqlServerDatabase DB = new Flextech.Infra.T4Scripts.Database.SqlServerDatabase(VariaveisDaSolucao.ConexaoBaseDeDados);
+
+	this.WriteLine("");
+	this.WriteLine("/*");
+	this.WriteLine("");
+	this.WriteLine("##################################################################################");
+	this.WriteLine("GERADOR SIMPLES - GERADOR SIMPLES - GERADOR SIMPLES - GERADOR SIMPLES - GERADOR SI");
+	this.WriteLine("##################################################################################");
+	this.WriteLine("");
+	this.WriteLine("==================================================================================");
+	this.WriteLine("Solução..........: " + VariaveisDaSolucao.NomeSolucao);
+	this.WriteLine("Projeto..........: Modelo");
+	this.WriteLine("Arquivo..........: T4Scripts\00.GerarTudo.tt");
+	this.WriteLine("Espaço de nome...: ");
+	this.WriteLine("Classe...........: ");
+	this.WriteLine("Descrição........: Gera todas as classes deste projeto");
+	this.WriteLine("==================================================================================");
+	this.WriteLine("Criação..........: 22/01/2018 - Lessandro Santana");
+	this.WriteLine("Alteração........: 30/05/2019 - Lessandro Santana");
+	this.WriteLine("==================================================================================");
+	this.WriteLine("Gerado em........: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+	this.WriteLine("");
+	this.WriteLine("Arquivo gerado automaticamente pelo Replicador da Flextech.");
+	this.WriteLine("");
+	this.WriteLine("NÃO EDITE ESTE ARQUIVO.");
+	this.WriteLine("TODAS AS ALTERAÇÕES FEITAS AQUI PODERÃO SER PERDIDAS.");
+	this.WriteLine("==================================================================================");
+	this.WriteLine("*/");
+	this.WriteLine("");
+	this.WriteLine("Inicio....................: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+	this.WriteLine("");
+	this.WriteLine("Project.Name..............: " + VisualStudioProject.Name);
+	this.WriteLine("Project.FullName..........: " + VisualStudioProject.FullName);
+
+
+	#region Variáveis
+
+	DataTable dtVW_ESQUEMA;
+	DataTable dtVW_TABELA;
+	DataTable dtVW_TABELA_CAMPO;
+
+	string esquema__nome = "";
+	string tabela__nome = "";
+	string tabela__id = "";
+
+	string nomeDoDiretorioPersonalizavel = "";
+	string nomeDoDiretorioGerado = "";
+
+    string nomeDaTabelaPascalCase = "";
+	string nomeDoArquivo = "";
+	string nomeDoModelo = "";
+	string conteudoDoModelo = "";
+	string conteudoGerado = "";
+	int contador = 0;
+
+	//string scriptMetadadosEstruturaDeDados						= "01.01.Metadados.EstruturaDeDados.tt";
+	//string scriptMetadadosMetadado								= "01.02.Metadados.Metadado.tt";
+	
+	string scriptBancoDeDadosClassesPersonalizavel				= "02.01.BancoDeDados.Classes.Personalizavel.tt";
+	string scriptBancoDeDadosClassesGerado						= "02.02.BancoDeDados.Classes.Gerado.tt";
+	string scriptBancoDeDadosEnumsGerado						= "02.03.BancoDeDados.Enums.Gerado.tt";
+	//string scriptBancoDeDadosEnumsTIPOGerado					= "02.04.BancoDeDados.Enums.TIPO.Gerado.tt";
+	
+	//string scriptSqlServerBancoDeDados							= "03.01.SqlServer.BancoDeDados.tt";
+	//string scriptSqlServerFuncoes								= "03.02.SqlServer.Funcoes.tt";
+	//string scriptSqlServerEsquemas								= "03.03.SqlServer.Esquemas.tt";
+	
+	//string scriptSqlServerTabelas								= "03.11.SqlServer.Tabelas.tt";
+	//string scriptSqlServerTabelasCampos							= "03.12.SqlServer.Tabelas.Campos.tt";
+	//string scriptSqlServerTabelasRelacionamentos				= "03.13.SqlServer.Tabelas.Relacionamentos.tt";
+	//string scriptSqlServerTabelasValoresPadrao					= "03.14.SqlServer.Tabelas.ValoresPadrao.tt";
+	//string scriptSqlServerTabelasChavesUnicas					= "03.15.SqlServer.Tabelas.ChavesUnicas.tt";
+	//string scriptSqlServerTabelasRestricoes						= "03.16.SqlServer.Tabelas.Restricoes.tt";
+	//string scriptSqlServerTabelasIndices						= "03.17.SqlServer.Tabelas.Indices.tt";
+	string scriptSqlServerTabelasProcedimentosArmazenados		= "03.18.SqlServer.Tabelas.ProcedimentosArmazenados.tt";
+	//string scriptSqlServerTabelasGatilhos						= "03.19.SqlServer.Tabelas.Gatilhos.tt";
+	
+	//string scriptSqlServerVisualizacoes							= "03.31.SqlServer.Visualizacoes.tt";
+	string scriptSqlServerVisualizacoesProcedimentosArmazenados	= "03.32.SqlServer.Visualizacoes.ProcedimentosArmazenados.tt";
+	
+	//string scriptSqlServerDadosIniciais							= "03.41.SqlServer.DadosIniciais.tt";
+	
+	string scriptSqlServerManutencaoProcedimentosArmazenados	= "03.51.SqlServer.Manutencao.ProcedimentosArmazenados.tt";
+	
+	string scriptSqlServerSqlCmd								= "03.99.SqlServer.SqlCmd.tt";
+
+	string scriptRegistroAtivoPersonalizavel	                = "04.01.RegistroAtivo.Personalizavel.tt";
+	string scriptRegistroAtivoGerado			                = "04.02.RegistroAtivo.Gerado.tt";
+
+    string scriptVisualizacaoWebModeloPersonalizavel	        = "05.01.Web.Mvc.Modelo.Personalizavel.tt";
+    string scriptVisualizacaoWebModeloGerado	                = "05.02.Web.Mvc.Modelo.Gerado.tt";
+    string scriptVisualizacaoWebControllerPersonalizavel	    = "05.03.Web.Mvc.Controlador.Personalizavel.tt";
+	string scriptVisualizacaoWebControllerGerado			    = "05.04.Web.Mvc.Controlador.Gerado.tt";
+
+
+    StringBuilder tabela__propriedades__todas = new StringBuilder();
+    StringBuilder tabela__propriedades__inicializar_propriedades_com_valores_padrao = new StringBuilder();
+    StringBuilder tabela__propriedades__dicionario = new StringBuilder();
+    StringBuilder tabela__propriedades__campo_alterado_pelo_usuario = new StringBuilder();
+    StringBuilder tabela__propriedades__valor_no_banco_de_dados = new StringBuilder();
+    StringBuilder tabela__propriedades__valor_editado_pelo_usuario = new StringBuilder();
+    StringBuilder tabela__existem_campos_editados = new StringBuilder();
+    StringBuilder tabela__marcar_registros_carregados_do_banco_de_dados = new StringBuilder();
+
+    StringBuilder visualizacao__propriedades__todas = new StringBuilder();
+    StringBuilder visualizacao__propriedades__inicializar_propriedades_com_valores_padrao = new StringBuilder();
+
+    string nomeDoCampo;
+	string nomeDoCampoTratado;
+    string tipoDoCampoCSharp;
+    string tipoDoCampoSqlServer;
+	string tamanhoDoCampo;
+	string valorPadraoDoCampo;
+	string nuloDoCampo;
+	bool chave_estrangeira;
+	string nomeDoEsquemaReferenciaChaveEstrangeira;
+	string nomeDaTabelaReferenciaChaveEstrangeira;
+
+	StringBuilder sqlserver__esquemas__drop				= new StringBuilder();
+	StringBuilder sqlserver__esquemas__create			= new StringBuilder();
+
+	StringBuilder sqlserver__tabelas__drop				= new StringBuilder();
+	StringBuilder sqlserver__tabelas__create			= new StringBuilder();
+
+	StringBuilder sqlserver__tabelas__campos__add		= new StringBuilder();
+	StringBuilder sqlserver__tabelas__relacionamentos	= new StringBuilder();
+
+	StringBuilder sqlserver__visualizacoes__drop		= new StringBuilder();
+	StringBuilder sqlserver__visualizacoes__create		= new StringBuilder();
+
+	#endregion Variáveis 
+	 
+
+
+
+
+	#region Banco De Dados - Classes
+
+	this.WriteLine("");
+	this.WriteLine("");
+	this.WriteLine("Banco De Dados - INICIO...: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+	this.WriteLine("---------------------------------------------------------------------------");
+	this.WriteLine("");
+
+
+    nomeDoDiretorioPersonalizavel	= VariaveisDaSolucao.DiretorioProjetoBancoDeDados;
+    nomeDoDiretorioGerado			= VariaveisDaSolucao.DiretorioProjetoBancoDeDados + @"Gerado\";
+
+    Directory.CreateDirectory(nomeDoDiretorioPersonalizavel);
+    Directory.CreateDirectory(nomeDoDiretorioGerado);
+
+
+    contador = 0;
+	foreach (Flextech.Infra.T4Scripts.Database.Table table in DB.Tables)
+    {
+		if (table.Name.Contains("XPO")) { continue; }
+        
+		contador++;
+
+		iTextTemplatingSession["TABELA__NOME"] =  table.Name;
+		iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+
+		#region Arquivos PERSONALIZÁVEIS
+
+		nomeDoArquivo = nomeDoDiretorioPersonalizavel + table.Name + ".cs";
+
+		if (!File.Exists(nomeDoArquivo))
+        {
+			nomeDoModelo = this.Host.ResolvePath(scriptBancoDeDadosClassesPersonalizavel);
+			conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+			conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+			File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+			this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+        }
+		else
+        {
+			this.WriteLine("Arquivo já existe.........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+        }
+
+		#endregion Arquivos PERSONALIZÁVEIS
+
+
+		#region Arquivos GERADOS
+
+		nomeDoArquivo = nomeDoDiretorioGerado + table.Name + ".gerado.cs";
+		nomeDoModelo = this.Host.ResolvePath(scriptBancoDeDadosClassesGerado);
+		conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+		conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+		File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+		this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+
+		#endregion Arquivos GERADOS
+
+    }
+
+    //nomeDoArquivo = nomeDoDiretorioGerado + "Enums.gerado.cs";
+    //nomeDoModelo = this.Host.ResolvePath(scriptBancoDeDadosEnumsGerado);
+    //conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+    //conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+    //File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+    //this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+
+
+	
+	//nomeDoDiretorioGerado = GetProjectDirectory() + @"ArquivosGerados\BancoDeDados\FLEXTECH\TIPO\";
+	//nomeDoArquivo = nomeDoDiretorioGerado + "Enuns.TIPO.gerado.cs";
+	//this.CheckoutFileIfRequired(nomeDoArquivo);
+	//nomeDoModelo = this.Host.ResolvePath(scriptBancoDeDadosEnumsTIPOGerado);
+	//conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+	//conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+	//File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+	//AddFileToProjectIfRequired(nomeDoArquivo);
+	//this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+
+
+
+	this.WriteLine("");
+    this.WriteLine("Banco De Dados - FIM......: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+	this.WriteLine("---------------------------------------------------------------------------");
+
+	#endregion Banco De Dados - Classes
+
+
+	#region SQL Server
+
+    this.WriteLine("");
+    this.WriteLine("");
+    this.WriteLine("SQL Server - INICIO.......: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+    this.WriteLine("---------------------------------------------------------------------------");
+    this.WriteLine("");	
+    
+    nomeDoDiretorioGerado			= VariaveisDaSolucao.DiretorioProjetoBancoDeDadosScripts + @"Gerado\";
+    Directory.CreateDirectory(nomeDoDiretorioGerado);
+
+    iTextTemplatingSession["BANCO_DE_DADOS__NOME"] = VariaveisDaSolucao.NomeDoBancoDeDados;
+    iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+
+    #region Tabelas - Procedimentos Armazenados
+    
+    nomeDoArquivo = nomeDoDiretorioGerado + "18.Tabelas.ProcedimentosArmazenados.sql";
+    nomeDoModelo = this.Host.ResolvePath(scriptSqlServerTabelasProcedimentosArmazenados);
+    conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+    conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+    File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+    this.WriteLine("Gerando o script SQL......: " + nomeDoArquivo);
+    
+    #endregion Tabelas - Procedimentos Armazenados
+
+
+    #region Visualizações - Procedimentos Armazenados
+    
+    nomeDoArquivo = nomeDoDiretorioGerado + "32.Visualizacoes.ProcedimentosArmazenados.sql";
+    nomeDoModelo = this.Host.ResolvePath(scriptSqlServerVisualizacoesProcedimentosArmazenados);
+    conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+    conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+    File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+    this.WriteLine("Gerando o script SQL......: " + nomeDoArquivo);
+    
+    #endregion Visualizações - Procedimentos Armazenados
+
+
+    #region Manutenção - Procedimentos Armazenados
+    
+    nomeDoArquivo = nomeDoDiretorioGerado + "51.Manutencao.ProcedimentosArmazenados.sql";
+    nomeDoModelo = this.Host.ResolvePath(scriptSqlServerManutencaoProcedimentosArmazenados);
+    conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+    conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+    File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+    this.WriteLine("Gerando o script SQL......: " + nomeDoArquivo);
+    
+    #endregion Manutenção - Procedimentos Armazenados
+
+
+    #region SqlCmd 
+    
+    nomeDoArquivo = nomeDoDiretorioGerado + "99.SqlCmd.cmd";
+    nomeDoModelo = this.Host.ResolvePath(scriptSqlServerSqlCmd);
+    conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+    conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+    File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+    this.WriteLine("Gerando o script SQL......: " + nomeDoArquivo);
+    
+    #endregion SqlCmd
+
+
+
+//
+//
+//	#region Dados Iniciais
+//
+//	nomeDoArquivo = nomeDoDiretorioGerado + "41.DadosIniciais.sql";
+//	this.CheckoutFileIfRequired(nomeDoArquivo);
+//	nomeDoModelo = this.Host.ResolvePath(scriptSqlServerDadosIniciais);
+//	conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+//	conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+//	File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+//	AddFileToProjectIfRequired(nomeDoArquivo);
+//	this.WriteLine("Gerando o script SQL......: " + nomeDoArquivo);
+//
+//	#endregion Dados Iniciais
+
+
+
+    this.WriteLine("");
+    this.WriteLine("SQL Server - FIM..........: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+    this.WriteLine("---------------------------------------------------------------------------");
+
+	#endregion SQL Server
+
+
+	#region Registro Ativo
+
+	this.WriteLine("");
+	this.WriteLine("");
+	this.WriteLine("Registro Ativo - INICIO...: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+	this.WriteLine("---------------------------------------------------------------------------");
+	this.WriteLine("");
+
+	nomeDoDiretorioPersonalizavel = VariaveisDaSolucao.DiretorioProjetoRegistroAtivo;
+	nomeDoDiretorioGerado = VariaveisDaSolucao.DiretorioProjetoRegistroAtivo + @"Gerado\";
+
+	Directory.CreateDirectory(nomeDoDiretorioPersonalizavel);
+	Directory.CreateDirectory(nomeDoDiretorioGerado);
+
+	contador = 0;
+	foreach (Flextech.Infra.T4Scripts.Database.Table table in DB.Tables)
+    {
+		if (table.Name.Contains("XPO")) { continue; }
+        
+		contador++;
+	
+		iTextTemplatingSession["TABELA__NOME"] = table.Name;
+		iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+
+		#region Arquivos PERSONALIZÁVEIS
+		
+		nomeDoArquivo = nomeDoDiretorioPersonalizavel + table.Name + ".cs";
+		
+		if (!File.Exists(nomeDoArquivo))
+		{
+			nomeDoModelo = this.Host.ResolvePath(scriptRegistroAtivoPersonalizavel);
+			conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+			conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+			File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+			this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+		}
+		else
+        {
+			this.WriteLine("Arquivo já existe.........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+        }
+		
+		#endregion Arquivos PERSONALIZÁVEIS
+
+
+		#region Arquivos GERADOS
+		
+		nomeDoArquivo = nomeDoDiretorioGerado + table.Name + ".gerado.cs";
+		nomeDoModelo = this.Host.ResolvePath(scriptRegistroAtivoGerado);
+		conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+		conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+		File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+		this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+		
+		#endregion Arquivos GERADOS
+    }
+
+  	this.WriteLine("");
+	this.WriteLine("Registro Ativo - FIM......: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+	this.WriteLine("---------------------------------------------------------------------------");
+
+	#endregion Registro Ativo
+
+
+    #region Visualização Web
+
+	this.WriteLine("");
+	this.WriteLine("");
+	this.WriteLine("Visualização Web - INICIO.: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+	this.WriteLine("---------------------------------------------------------------------------");
+	this.WriteLine("");
+
+
+    #region MODELO
+
+	nomeDoDiretorioPersonalizavel = VariaveisDaSolucao.DiretorioProjetoVisualizacaoWeb + @"Modelo\";
+	nomeDoDiretorioGerado = VariaveisDaSolucao.DiretorioProjetoVisualizacaoWeb + @"Modelo\Gerado\";
+
+	Directory.CreateDirectory(nomeDoDiretorioPersonalizavel);
+	Directory.CreateDirectory(nomeDoDiretorioGerado);
+
+	contador = 0;
+	foreach (Flextech.Infra.T4Scripts.Database.Table table in DB.Tables)
+    {
+		if (table.Name.Contains("XPO")) { continue; }
+        
+		contador++;
+	
+		iTextTemplatingSession["TABELA__NOME"] = table.Name;
+		iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+        nomeDaTabelaPascalCase = ToPascalCase(table.Name);
+
+		#region MODELO - Arquivos PERSONALIZÁVEIS
+		
+		nomeDoArquivo = nomeDoDiretorioPersonalizavel + nomeDaTabelaPascalCase + ".cs";
+		
+		if (!File.Exists(nomeDoArquivo))
+		{
+			nomeDoModelo = this.Host.ResolvePath(scriptVisualizacaoWebModeloPersonalizavel);
+			conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+			conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+			File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+			this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+		}
+		else
+        {
+			this.WriteLine("Arquivo já existe.........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+        }
+		
+		#endregion MODELO - Arquivos PERSONALIZÁVEIS
+
+
+		#region MODELO - Arquivos GERADOS
+		
+		nomeDoArquivo = nomeDoDiretorioGerado + nomeDaTabelaPascalCase + ".gerado.cs";
+		nomeDoModelo = this.Host.ResolvePath(scriptVisualizacaoWebModeloGerado);
+		conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+		conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+		File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+		this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+		
+		#endregion MODELO - Arquivos GERADOS
+    }
+
+    #endregion MODELO
+
+
+    #region CONTROLLERS
+
+	nomeDoDiretorioPersonalizavel = VariaveisDaSolucao.DiretorioProjetoVisualizacaoWeb + @"Controllers\";
+	nomeDoDiretorioGerado = VariaveisDaSolucao.DiretorioProjetoVisualizacaoWeb + @"Controllers\Gerado\";
+
+	Directory.CreateDirectory(nomeDoDiretorioPersonalizavel);
+	Directory.CreateDirectory(nomeDoDiretorioGerado);
+
+	contador = 0;
+	foreach (Flextech.Infra.T4Scripts.Database.Table table in DB.Tables)
+    {
+		if (table.Name.Contains("XPO")) { continue; }
+        
+		contador++;
+	
+		iTextTemplatingSession["TABELA__NOME"] = table.Name;
+		iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+        nomeDaTabelaPascalCase = ToPascalCase(table.Name);
+
+		#region CONTROLLERS - Arquivos PERSONALIZÁVEIS
+		
+		nomeDoArquivo = nomeDoDiretorioPersonalizavel + nomeDaTabelaPascalCase + "Controller.cs";
+		
+		if (!File.Exists(nomeDoArquivo))
+		{
+			nomeDoModelo = this.Host.ResolvePath(scriptVisualizacaoWebControllerPersonalizavel);
+			conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+			conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+			File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+			this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+		}
+		else
+        {
+			this.WriteLine("Arquivo já existe.........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+        }
+		
+		#endregion CONTROLLERS - Arquivos PERSONALIZÁVEIS
+
+
+		#region CONTROLLERS - Arquivos GERADOS
+		
+		nomeDoArquivo = nomeDoDiretorioGerado + nomeDaTabelaPascalCase + "Controller.gerado.cs";
+		nomeDoModelo = this.Host.ResolvePath(scriptVisualizacaoWebControllerGerado);
+		conteudoDoModelo = File.ReadAllText(nomeDoModelo);
+		conteudoGerado = engine.ProcessTemplate(conteudoDoModelo, this.Host);
+		File.WriteAllText(nomeDoArquivo, conteudoGerado); 
+		this.WriteLine("Gerando a classe..........: " + string.Format("{0:D3}", contador) + " - " + nomeDoArquivo);
+		
+		#endregion CONTROLLERS - Arquivos GERADOS
+    }
+
+    #endregion CONTROLLERS
+
+  	this.WriteLine("");
+	this.WriteLine("Registro Ativo - FIM......: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+	this.WriteLine("---------------------------------------------------------------------------");
+
+	#endregion Visualização Web
+
+
+	this.WriteLine("Fim.......................: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff"));
+
+	
+#>

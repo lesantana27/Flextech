@@ -1,0 +1,536 @@
+﻿
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID" Binding="{Binding BALANCA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__NOME_BALANCA" Binding="{Binding BALANCA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__SIGLA_BALANCA" Binding="{Binding BALANCA__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO" Binding="{Binding PESO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REFERENTE_A_HORA" Binding="{Binding REFERENTE_A_HORA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_PROCESSADO" Binding="{Binding REGISTRO_PROCESSADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_PROCESSAMENTO" Binding="{Binding DATA_PROCESSAMENTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW - BALANCA_HISTORICO_01_H_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID" Binding="{Binding BALANCA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__NOME_BALANCA" Binding="{Binding BALANCA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__SIGLA_BALANCA" Binding="{Binding BALANCA__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO" Binding="{Binding PESO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REFERENTE_AO_MINUTO" Binding="{Binding REFERENTE_AO_MINUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_PROCESSADO" Binding="{Binding REGISTRO_PROCESSADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_PROCESSAMENTO" Binding="{Binding DATA_PROCESSAMENTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW - BALANCA_HISTORICO_01_M_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID" Binding="{Binding BALANCA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__NOME_BALANCA" Binding="{Binding BALANCA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__SIGLA_BALANCA" Binding="{Binding BALANCA__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO" Binding="{Binding PESO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REFERENTE_AO_MINUTO" Binding="{Binding REFERENTE_AO_MINUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_PROCESSADO" Binding="{Binding REGISTRO_PROCESSADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_PROCESSAMENTO" Binding="{Binding DATA_PROCESSAMENTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW - BALANCA_HISTORICO_05_M_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID" Binding="{Binding BALANCA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__NOME_BALANCA" Binding="{Binding BALANCA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__SIGLA_BALANCA" Binding="{Binding BALANCA__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO" Binding="{Binding PESO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REFERENTE_AO_MINUTO" Binding="{Binding REFERENTE_AO_MINUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_PROCESSADO" Binding="{Binding REGISTRO_PROCESSADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_PROCESSAMENTO" Binding="{Binding DATA_PROCESSAMENTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW - BALANCA_HISTORICO_15_M_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID" Binding="{Binding BALANCA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__NOME_BALANCA" Binding="{Binding BALANCA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__SIGLA_BALANCA" Binding="{Binding BALANCA__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO" Binding="{Binding PESO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REFERENTE_AO_MINUTO" Binding="{Binding REFERENTE_AO_MINUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_PROCESSADO" Binding="{Binding REGISTRO_PROCESSADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_PROCESSAMENTO" Binding="{Binding DATA_PROCESSAMENTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW - BALANCA_HISTORICO_30_M_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID" Binding="{Binding BALANCA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__NOME_BALANCA" Binding="{Binding BALANCA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__SIGLA_BALANCA" Binding="{Binding BALANCA__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO" Binding="{Binding PESO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_PROCESSADO" Binding="{Binding REGISTRO_PROCESSADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_PROCESSAMENTO" Binding="{Binding DATA_PROCESSAMENTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW - BALANCA_HISTORICO_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__ID" Binding="{Binding IHM__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__NOME_IHM" Binding="{Binding IHM__NOME_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__SIGLA_IHM" Binding="{Binding IHM__SIGLA_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__MARCA_IHM" Binding="{Binding IHM__MARCA_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__MODELO_IHM" Binding="{Binding IHM__MODELO_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__REDE_TCP_HABILITAR" Binding="{Binding IHM__REDE_TCP_HABILITAR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__REDE_TCP_IP" Binding="{Binding IHM__REDE_TCP_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="IHM__REDE_TCP_PORTA" Binding="{Binding IHM__REDE_TCP_PORTA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_BALANCA" Binding="{Binding NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="SIGLA_BALANCA" Binding="{Binding SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="MARCA_BALANCA" Binding="{Binding MARCA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="MODELO_BALANCA" Binding="{Binding MODELO_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="ENTRADA_SAIDA" Binding="{Binding ENTRADA_SAIDA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO_ACUMULADO" Binding="{Binding PESO_ACUMULADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW - BALANCA_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_DIAGRAMA" Binding="{Binding NOME_DIAGRAMA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__ENTRADA" Binding="{Binding BALANCA__ID__ENTRADA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_ENTRADA__NOME_BALANCA" Binding="{Binding BALANCA_ENTRADA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_ENTRADA__SIGLA_BALANCA" Binding="{Binding BALANCA_ENTRADA__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_ENTRADA__PESO_ACUMULADO" Binding="{Binding BALANCA_ENTRADA__PESO_ACUMULADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_ENTRADA_ATIVA" Binding="{Binding BALANCA_ENTRADA_ATIVA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_ENTRADA_PARTICIPA_CALCULO" Binding="{Binding BALANCA_ENTRADA_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_1" Binding="{Binding BALANCA__ID__SAIDA_1}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_1__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_1__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_1__SIGLA_BALANCA" Binding="{Binding BALANCA_SAIDA_1__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_1__PESO_ACUMULADO" Binding="{Binding BALANCA_SAIDA_1__PESO_ACUMULADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_1_ATIVA" Binding="{Binding BALANCA_SAIDA_1_ATIVA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_1_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_1_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_2" Binding="{Binding BALANCA__ID__SAIDA_2}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_2__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_2__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_2__SIGLA_BALANCA" Binding="{Binding BALANCA_SAIDA_2__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_2__PESO_ACUMULADO" Binding="{Binding BALANCA_SAIDA_2__PESO_ACUMULADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_2_ATIVA" Binding="{Binding BALANCA_SAIDA_2_ATIVA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_2_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_2_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_3" Binding="{Binding BALANCA__ID__SAIDA_3}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_3__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_3__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_3__SIGLA_BALANCA" Binding="{Binding BALANCA_SAIDA_3__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_3__PESO_ACUMULADO" Binding="{Binding BALANCA_SAIDA_3__PESO_ACUMULADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_3_ATIVA" Binding="{Binding BALANCA_SAIDA_3_ATIVA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_3_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_3_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_4" Binding="{Binding BALANCA__ID__SAIDA_4}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_4__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_4__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_4__SIGLA_BALANCA" Binding="{Binding BALANCA_SAIDA_4__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_4__PESO_ACUMULADO" Binding="{Binding BALANCA_SAIDA_4__PESO_ACUMULADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_4_ATIVA" Binding="{Binding BALANCA_SAIDA_4_ATIVA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_4_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_4_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_5" Binding="{Binding BALANCA__ID__SAIDA_5}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_5__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_5__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_5__SIGLA_BALANCA" Binding="{Binding BALANCA_SAIDA_5__SIGLA_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_5__PESO_ACUMULADO" Binding="{Binding BALANCA_SAIDA_5__PESO_ACUMULADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_5_ATIVA" Binding="{Binding BALANCA_SAIDA_5_ATIVA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_5_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_5_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW - DIAGRAMA_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+IHM_VW - IHM_VW - IHM_VW - IHM_VW - IHM_VW - IHM_VW - IHM_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_IHM" Binding="{Binding NOME_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="SIGLA_IHM" Binding="{Binding SIGLA_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="MARCA_IHM" Binding="{Binding MARCA_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="MODELO_IHM" Binding="{Binding MODELO_IHM}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REDE_TCP_HABILITAR" Binding="{Binding REDE_TCP_HABILITAR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REDE_TCP_IP" Binding="{Binding REDE_TCP_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REDE_TCP_PORTA" Binding="{Binding REDE_TCP_PORTA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+IHM_VW - IHM_VW - IHM_VW - IHM_VW - IHM_VW - IHM_VW - IHM_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DIAGRAMA__ID" Binding="{Binding DIAGRAMA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DIAGRAMA__NOME_DIAGRAMA" Binding="{Binding DIAGRAMA__NOME_DIAGRAMA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO__ID__ENTRADA" Binding="{Binding PRODUTO__ID__ENTRADA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_ENTRADA__NOME_PRODUTO" Binding="{Binding PRODUTO_ENTRADA__NOME_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO__ID__SAIDA_1" Binding="{Binding PRODUTO__ID__SAIDA_1}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_SAIDA_1__NOME_PRODUTO" Binding="{Binding PRODUTO_SAIDA_1__NOME_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO__ID__SAIDA_2" Binding="{Binding PRODUTO__ID__SAIDA_2}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_SAIDA_2__NOME_PRODUTO" Binding="{Binding PRODUTO_SAIDA_2__NOME_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO__ID__SAIDA_3" Binding="{Binding PRODUTO__ID__SAIDA_3}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_SAIDA_3__NOME_PRODUTO" Binding="{Binding PRODUTO_SAIDA_3__NOME_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO__ID__SAIDA_4" Binding="{Binding PRODUTO__ID__SAIDA_4}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_SAIDA_4__NOME_PRODUTO" Binding="{Binding PRODUTO_SAIDA_4__NOME_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO__ID__SAIDA_5" Binding="{Binding PRODUTO__ID__SAIDA_5}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_SAIDA_5__NOME_PRODUTO" Binding="{Binding PRODUTO_SAIDA_5__NOME_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_DIAGRAMA" Binding="{Binding NOME_DIAGRAMA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NUMERO_ORDEM_PRODUCAO" Binding="{Binding NUMERO_ORDEM_PRODUCAO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_OPERADOR" Binding="{Binding NOME_OPERADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_INICIO" Binding="{Binding DATA_INICIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_TERMINO" Binding="{Binding DATA_TERMINO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PORCENTAGEM_UMIDADE" Binding="{Binding PORCENTAGEM_UMIDADE}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_ENTRADA_ESTIMADO" Binding="{Binding QUANTIDADE_PRODUTO_ENTRADA_ESTIMADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_1_ESTIMADO" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_1_ESTIMADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_2_ESTIMADO" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_2_ESTIMADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_3_ESTIMADO" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_3_ESTIMADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_4_ESTIMADO" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_4_ESTIMADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_5_ESTIMADO" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_5_ESTIMADO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_ENTRADA_REAL" Binding="{Binding QUANTIDADE_PRODUTO_ENTRADA_REAL}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_1_REAL" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_1_REAL}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_2_REAL" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_2_REAL}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_3_REAL" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_3_REAL}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_4_REAL" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_4_REAL}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="QUANTIDADE_PRODUTO_SAIDA_5_REAL" Binding="{Binding QUANTIDADE_PRODUTO_SAIDA_5_REAL}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW - PRODUCAO_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="CODIGO_PRODUTO" Binding="{Binding CODIGO_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_PRODUTO" Binding="{Binding NOME_PRODUTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PORCENTAGEM_UMIDADE" Binding="{Binding PORCENTAGEM_UMIDADE}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_ENTRADA" Binding="{Binding PRODUTO_ENTRADA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PRODUTO_SAIDA" Binding="{Binding PRODUTO_SAIDA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW - PRODUTO_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DIAGRAMA__ID" Binding="{Binding DIAGRAMA__ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DIAGRAMA__NOME_DIAGRAMA" Binding="{Binding DIAGRAMA__NOME_DIAGRAMA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__ENTRADA" Binding="{Binding BALANCA__ID__ENTRADA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_ENTRADA__NOME_BALANCA" Binding="{Binding BALANCA_ENTRADA__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_1" Binding="{Binding BALANCA__ID__SAIDA_1}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_1__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_1__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_2" Binding="{Binding BALANCA__ID__SAIDA_2}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_2__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_2__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_3" Binding="{Binding BALANCA__ID__SAIDA_3}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_3__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_3__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_4" Binding="{Binding BALANCA__ID__SAIDA_4}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_4__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_4__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA__ID__SAIDA_5" Binding="{Binding BALANCA__ID__SAIDA_5}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_5__NOME_BALANCA" Binding="{Binding BALANCA_SAIDA_5__NOME_BALANCA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_ENTRADA_PARTICIPA_CALCULO" Binding="{Binding BALANCA_ENTRADA_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_1_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_1_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_2_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_2_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_3_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_3_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_4_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_4_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="BALANCA_SAIDA_5_PARTICIPA_CALCULO" Binding="{Binding BALANCA_SAIDA_5_PARTICIPA_CALCULO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REFERENTE_A_HORA" Binding="{Binding REFERENTE_A_HORA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO_ENTRADA" Binding="{Binding PESO_ENTRADA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO_SAIDA_1" Binding="{Binding PESO_SAIDA_1}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO_SAIDA_2" Binding="{Binding PESO_SAIDA_2}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO_SAIDA_3" Binding="{Binding PESO_SAIDA_3}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO_SAIDA_4" Binding="{Binding PESO_SAIDA_4}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="PESO_SAIDA_5" Binding="{Binding PESO_SAIDA_5}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="RENDIMENTO" Binding="{Binding RENDIMENTO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="SOMA_SAIDAS" Binding="{Binding SOMA_SAIDAS}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="DATA_COLETA" Binding="{Binding DATA_COLETA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW - RENDIMENTO_01_H_VW
+#########################################################################################################################################
+
+
+
+
+
+
+#########################################################################################################################################
+USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW
+#########################################################################################################################################
+
+
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_USUARIO" Binding="{Binding NOME_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="NOME_PESSOA" Binding="{Binding NOME_PESSOA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="SENHA" Binding="{Binding SENHA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="ADMIN" Binding="{Binding ADMIN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="USUARIO_TOKEN" Binding="{Binding USUARIO_TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="USUARIO_TOKEN_VALIDADE" Binding="{Binding USUARIO_TOKEN_VALIDADE}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="TOKEN" Binding="{Binding TOKEN}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_DATA" Binding="{Binding REGISTRO_CRIADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_USUARIO" Binding="{Binding REGISTRO_CRIADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_IP" Binding="{Binding REGISTRO_CRIADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_CRIADO_COMPUTADOR" Binding="{Binding REGISTRO_CRIADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_DATA" Binding="{Binding REGISTRO_ATUALIZADO_DATA}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_USUARIO" Binding="{Binding REGISTRO_ATUALIZADO_USUARIO}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_IP" Binding="{Binding REGISTRO_ATUALIZADO_IP}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_ATUALIZADO_COMPUTADOR" Binding="{Binding REGISTRO_ATUALIZADO_COMPUTADOR}" Width="40" IsReadOnly="True" />
+                        <DataGridTextColumn Header="REGISTRO_EXCLUIDO" Binding="{Binding REGISTRO_EXCLUIDO}" Width="40" IsReadOnly="True" />
+
+
+#########################################################################################################################################
+USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW - USUARIO_VW
+#########################################################################################################################################
+
+
+
+
+
+
+
+

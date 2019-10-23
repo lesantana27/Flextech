@@ -1,0 +1,41 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#@ parameter name="TABELA__NOME" type="System.String" #>
+<# 
+	CarregarVariaveisDaSolucao();
+
+	string arquivo = @"RegistroAtivo\" + TABELA__NOME + @".cs";
+#> 
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Negocio
+Arquivo..........: <#= arquivo #>
+Espaço de nome...: <#= VariaveisDaSolucao.EspacoDeNomeProjetoRegistroAtivo #>
+Classe...........: <#= TABELA__NOME #>
+Descrição........: Classe <#= TABELA__NOME #> personalizada. 
+==================================================================================
+Criação..........: 24/01/2018 - Lessandro Santana
+Alteração........: 10/05/2018 - Lessandro Santana
+==================================================================================
+Gerado em........: <#= DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") #>
+==================================================================================
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace <#= VariaveisDaSolucao.EspacoDeNomeProjetoRegistroAtivo #>
+{
+    public partial class <#= TABELA__NOME #> 
+    {
+        public <#= TABELA__NOME #>(string nomeComputador, string nomeUsuario, string enderecoIP) : base(nomeComputador, nomeUsuario, enderecoIP)
+        {
+
+        }
+
+        // Colocar aqui a programação personalizada.
+    }
+}

@@ -1,0 +1,1452 @@
+﻿
+
+
+
+#########################################################################################################################################
+BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Balanca
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Balancas
+        <small>Cadastro geral de Balancas</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Balancas</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Balanca/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Balanca</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>IhmId</th>
+                        <th>NomeBalanca</th>
+                        <th>SiglaBalanca</th>
+                        <th>MarcaBalanca</th>
+                        <th>ModeloBalanca</th>
+                        <th>PesoAcumulado</th>
+                        <th>DataColeta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BalancaRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.IHM__ID</td>
+                        <td>@item.NOME_BALANCA</td>
+                        <td>@item.SIGLA_BALANCA</td>
+                        <td>@item.MARCA_BALANCA</td>
+                        <td>@item.MODELO_BALANCA</td>
+                        <td>@item.PESO_ACUMULADO</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Balanca/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistoricos
+        <small>Cadastro geral de BalancaHistoricos</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de BalancaHistoricos</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo BalancaHistorico</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>BalancaId</th>
+                        <th>Peso</th>
+                        <th>DataColeta</th>
+                        <th>RegistroProcessado</th>
+                        <th>DataProcessamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BalancaHistoricoRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.BALANCA__ID</td>
+                        <td>@item.PESO</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td>@item.REGISTRO_PROCESSADO</td>
+                        <td>@item.DATA_PROCESSAMENTO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico01H
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico01Hs
+        <small>Cadastro geral de BalancaHistorico01Hs</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de BalancaHistorico01Hs</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01H/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo BalancaHistorico01H</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>BalancaId</th>
+                        <th>Peso</th>
+                        <th>DataColeta</th>
+                        <th>ReferenteAHora</th>
+                        <th>RegistroProcessado</th>
+                        <th>DataProcessamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BalancaHistorico01HRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.BALANCA__ID</td>
+                        <td>@item.PESO</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td>@item.REFERENTE_A_HORA</td>
+                        <td>@item.REGISTRO_PROCESSADO</td>
+                        <td>@item.DATA_PROCESSAMENTO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01H/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico01M
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico01Ms
+        <small>Cadastro geral de BalancaHistorico01Ms</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de BalancaHistorico01Ms</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01M/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo BalancaHistorico01M</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>BalancaId</th>
+                        <th>Peso</th>
+                        <th>DataColeta</th>
+                        <th>ReferenteAoMinuto</th>
+                        <th>RegistroProcessado</th>
+                        <th>DataProcessamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BalancaHistorico01MRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.BALANCA__ID</td>
+                        <td>@item.PESO</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td>@item.REFERENTE_AO_MINUTO</td>
+                        <td>@item.REGISTRO_PROCESSADO</td>
+                        <td>@item.DATA_PROCESSAMENTO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01M/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico05M
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico05Ms
+        <small>Cadastro geral de BalancaHistorico05Ms</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de BalancaHistorico05Ms</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico05M/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo BalancaHistorico05M</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>BalancaId</th>
+                        <th>Peso</th>
+                        <th>DataColeta</th>
+                        <th>ReferenteAoMinuto</th>
+                        <th>RegistroProcessado</th>
+                        <th>DataProcessamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BalancaHistorico05MRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.BALANCA__ID</td>
+                        <td>@item.PESO</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td>@item.REFERENTE_AO_MINUTO</td>
+                        <td>@item.REGISTRO_PROCESSADO</td>
+                        <td>@item.DATA_PROCESSAMENTO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico05M/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico15M
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico15Ms
+        <small>Cadastro geral de BalancaHistorico15Ms</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de BalancaHistorico15Ms</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico15M/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo BalancaHistorico15M</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>BalancaId</th>
+                        <th>Peso</th>
+                        <th>DataColeta</th>
+                        <th>ReferenteAoMinuto</th>
+                        <th>RegistroProcessado</th>
+                        <th>DataProcessamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BalancaHistorico15MRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.BALANCA__ID</td>
+                        <td>@item.PESO</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td>@item.REFERENTE_AO_MINUTO</td>
+                        <td>@item.REGISTRO_PROCESSADO</td>
+                        <td>@item.DATA_PROCESSAMENTO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico15M/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico30M
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico30Ms
+        <small>Cadastro geral de BalancaHistorico30Ms</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de BalancaHistorico30Ms</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico30M/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo BalancaHistorico30M</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>BalancaId</th>
+                        <th>Peso</th>
+                        <th>DataColeta</th>
+                        <th>ReferenteAoMinuto</th>
+                        <th>RegistroProcessado</th>
+                        <th>DataProcessamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BalancaHistorico30MRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.BALANCA__ID</td>
+                        <td>@item.PESO</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td>@item.REFERENTE_AO_MINUTO</td>
+                        <td>@item.REGISTRO_PROCESSADO</td>
+                        <td>@item.DATA_PROCESSAMENTO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico30M/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Diagrama
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Diagramas
+        <small>Cadastro geral de Diagramas</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Diagramas</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Diagrama/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Diagrama</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>IhmId</th>
+                        <th>BalancaIdEntrada</th>
+                        <th>BalancaIdSaida1</th>
+                        <th>BalancaIdSaida2</th>
+                        <th>BalancaIdSaida3</th>
+                        <th>BalancaIdSaida4</th>
+                        <th>BalancaIdSaida5</th>
+                        <th>NomeDiagrama</th>
+                        <th>BalancaEntradaAtiva</th>
+                        <th>BalancaSaida1Ativa</th>
+                        <th>BalancaSaida2Ativa</th>
+                        <th>BalancaSaida3Ativa</th>
+                        <th>BalancaSaida4Ativa</th>
+                        <th>BalancaSaida5Ativa</th>
+                        <th>BalancaEntradaParticipaCalculo</th>
+                        <th>BalancaSaida1ParticipaCalculo</th>
+                        <th>BalancaSaida2ParticipaCalculo</th>
+                        <th>BalancaSaida3ParticipaCalculo</th>
+                        <th>BalancaSaida4ParticipaCalculo</th>
+                        <th>BalancaSaida5ParticipaCalculo</th>
+                        <th>DiagramaAtivo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.DiagramaRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.IHM__ID</td>
+                        <td>@item.BALANCA__ID__ENTRADA</td>
+                        <td>@item.BALANCA__ID__SAIDA_1</td>
+                        <td>@item.BALANCA__ID__SAIDA_2</td>
+                        <td>@item.BALANCA__ID__SAIDA_3</td>
+                        <td>@item.BALANCA__ID__SAIDA_4</td>
+                        <td>@item.BALANCA__ID__SAIDA_5</td>
+                        <td>@item.NOME_DIAGRAMA</td>
+                        <td>@item.BALANCA_ENTRADA_ATIVA</td>
+                        <td>@item.BALANCA_SAIDA_1_ATIVA</td>
+                        <td>@item.BALANCA_SAIDA_2_ATIVA</td>
+                        <td>@item.BALANCA_SAIDA_3_ATIVA</td>
+                        <td>@item.BALANCA_SAIDA_4_ATIVA</td>
+                        <td>@item.BALANCA_SAIDA_5_ATIVA</td>
+                        <td>@item.BALANCA_ENTRADA_PARTICIPA_CALCULO</td>
+                        <td>@item.BALANCA_SAIDA_1_PARTICIPA_CALCULO</td>
+                        <td>@item.BALANCA_SAIDA_2_PARTICIPA_CALCULO</td>
+                        <td>@item.BALANCA_SAIDA_3_PARTICIPA_CALCULO</td>
+                        <td>@item.BALANCA_SAIDA_4_PARTICIPA_CALCULO</td>
+                        <td>@item.BALANCA_SAIDA_5_PARTICIPA_CALCULO</td>
+                        <td>@item.DIAGRAMA_ATIVO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Diagrama/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Email
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Emails
+        <small>Cadastro geral de Emails</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Emails</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Email/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Email</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>NomePessoa</th>
+                        <th>EmailPessoa</th>
+                        <th>EmailAtivo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.EmailRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.NOME_PESSOA</td>
+                        <td>@item.EMAIL_PESSOA</td>
+                        <td>@item.EMAIL_ATIVO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Email/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+IHM - IHM - IHM - IHM - IHM - IHM - IHM
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Ihm
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Ihms
+        <small>Cadastro geral de Ihms</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Ihms</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Ihm/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Ihm</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>NomeIhm</th>
+                        <th>SiglaIhm</th>
+                        <th>MarcaIhm</th>
+                        <th>ModeloIhm</th>
+                        <th>RedeTcpHabilitar</th>
+                        <th>RedeTcpIp</th>
+                        <th>RedeTcpPorta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.IhmRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.NOME_IHM</td>
+                        <td>@item.SIGLA_IHM</td>
+                        <td>@item.MARCA_IHM</td>
+                        <td>@item.MODELO_IHM</td>
+                        <td>@item.REDE_TCP_HABILITAR</td>
+                        <td>@item.REDE_TCP_IP</td>
+                        <td>@item.REDE_TCP_PORTA</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Ihm/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+IHM - IHM - IHM - IHM - IHM - IHM - IHM
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.ParametroSistema
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        ParametroSistemas
+        <small>Cadastro geral de ParametroSistemas</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de ParametroSistemas</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/ParametroSistema/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo ParametroSistema</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>NomeParametro</th>
+                        <th>ValorParametro</th>
+                        <th>ParametroAtivo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ParametroSistemaRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.NOME_PARAMETRO</td>
+                        <td>@item.VALOR_PARAMETRO</td>
+                        <td>@item.PARAMETRO_ATIVO</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/ParametroSistema/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Producao
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Producaos
+        <small>Cadastro geral de Producaos</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Producaos</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Producao/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Producao</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>DiagramaId</th>
+                        <th>ProdutoIdEntrada</th>
+                        <th>ProdutoIdSaida1</th>
+                        <th>ProdutoIdSaida2</th>
+                        <th>ProdutoIdSaida3</th>
+                        <th>ProdutoIdSaida4</th>
+                        <th>ProdutoIdSaida5</th>
+                        <th>NomeDiagrama</th>
+                        <th>NumeroOrdemProducao</th>
+                        <th>NomeOperador</th>
+                        <th>DataInicio</th>
+                        <th>DataTermino</th>
+                        <th>PorcentagemUmidade</th>
+                        <th>QuantidadeProdutoEntradaEstimado</th>
+                        <th>QuantidadeProdutoSaida1Estimado</th>
+                        <th>QuantidadeProdutoSaida2Estimado</th>
+                        <th>QuantidadeProdutoSaida3Estimado</th>
+                        <th>QuantidadeProdutoSaida4Estimado</th>
+                        <th>QuantidadeProdutoSaida5Estimado</th>
+                        <th>QuantidadeProdutoEntradaReal</th>
+                        <th>QuantidadeProdutoSaida1Real</th>
+                        <th>QuantidadeProdutoSaida2Real</th>
+                        <th>QuantidadeProdutoSaida3Real</th>
+                        <th>QuantidadeProdutoSaida4Real</th>
+                        <th>QuantidadeProdutoSaida5Real</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ProducaoRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.DIAGRAMA__ID</td>
+                        <td>@item.PRODUTO__ID__ENTRADA</td>
+                        <td>@item.PRODUTO__ID__SAIDA_1</td>
+                        <td>@item.PRODUTO__ID__SAIDA_2</td>
+                        <td>@item.PRODUTO__ID__SAIDA_3</td>
+                        <td>@item.PRODUTO__ID__SAIDA_4</td>
+                        <td>@item.PRODUTO__ID__SAIDA_5</td>
+                        <td>@item.NOME_DIAGRAMA</td>
+                        <td>@item.NUMERO_ORDEM_PRODUCAO</td>
+                        <td>@item.NOME_OPERADOR</td>
+                        <td>@item.DATA_INICIO</td>
+                        <td>@item.DATA_TERMINO</td>
+                        <td>@item.PORCENTAGEM_UMIDADE</td>
+                        <td>@item.QUANTIDADE_PRODUTO_ENTRADA_ESTIMADO</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_1_ESTIMADO</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_2_ESTIMADO</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_3_ESTIMADO</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_4_ESTIMADO</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_5_ESTIMADO</td>
+                        <td>@item.QUANTIDADE_PRODUTO_ENTRADA_REAL</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_1_REAL</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_2_REAL</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_3_REAL</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_4_REAL</td>
+                        <td>@item.QUANTIDADE_PRODUTO_SAIDA_5_REAL</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Producao/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Produto
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Produtos
+        <small>Cadastro geral de Produtos</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Produtos</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Produto/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Produto</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>CodigoProduto</th>
+                        <th>NomeProduto</th>
+                        <th>PorcentagemUmidade</th>
+                        <th>ProdutoEntrada</th>
+                        <th>ProdutoSaida</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ProdutoRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.CODIGO_PRODUTO</td>
+                        <td>@item.NOME_PRODUTO</td>
+                        <td>@item.PORCENTAGEM_UMIDADE</td>
+                        <td>@item.PRODUTO_ENTRADA</td>
+                        <td>@item.PRODUTO_SAIDA</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Produto/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Rendimento01H
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Rendimento01Hs
+        <small>Cadastro geral de Rendimento01Hs</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Rendimento01Hs</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Rendimento01H/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Rendimento01H</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>DiagramaId</th>
+                        <th>ReferenteAHora</th>
+                        <th>PesoEntrada</th>
+                        <th>PesoSaida1</th>
+                        <th>PesoSaida2</th>
+                        <th>PesoSaida3</th>
+                        <th>PesoSaida4</th>
+                        <th>PesoSaida5</th>
+                        <th>Rendimento</th>
+                        <th>SomaSaidas</th>
+                        <th>DataColeta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Rendimento01HRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.DIAGRAMA__ID</td>
+                        <td>@item.REFERENTE_A_HORA</td>
+                        <td>@item.PESO_ENTRADA</td>
+                        <td>@item.PESO_SAIDA_1</td>
+                        <td>@item.PESO_SAIDA_2</td>
+                        <td>@item.PESO_SAIDA_3</td>
+                        <td>@item.PESO_SAIDA_4</td>
+                        <td>@item.PESO_SAIDA_5</td>
+                        <td>@item.RENDIMENTO</td>
+                        <td>@item.SOMA_SAIDAS</td>
+                        <td>@item.DATA_COLETA</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Rendimento01H/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Usuario
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        Usuarios
+        <small>Cadastro geral de Usuarios</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de Usuarios</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/Usuario/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo Usuario</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+                        <th>NomeUsuario</th>
+                        <th>NomePessoa</th>
+                        <th>Senha</th>
+                        <th>Admin</th>
+                        <th>UsuarioToken</th>
+                        <th>UsuarioTokenValidade</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.UsuarioRegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.NOME_USUARIO</td>
+                        <td>@item.NOME_PESSOA</td>
+                        <td>@item.SENHA</td>
+                        <td>@item.ADMIN</td>
+                        <td>@item.USUARIO_TOKEN</td>
+                        <td>@item.USUARIO_TOKEN_VALIDADE</td>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/Usuario/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO
+#########################################################################################################################################
+
+
+
+
+

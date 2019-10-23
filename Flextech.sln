@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flextech.Infra", "Flextech.Infra\Flextech.Infra.csproj", "{6CE0C406-A6C2-488A-9539-AF7530004233}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flextech.Replicador", "Flextech.Replicador\Flextech.Replicador.csproj", "{F2E49D30-C6CA-42BD-9D1C-4A400FE17831}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flextech.Teste.Console", "Flextech.Teste.Console\Flextech.Teste.Console.csproj", "{107A173E-5424-4CD2-B834-2C2C7CA92C10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flextech.Replicador.Wpf", "Flextech.Replicador.Wpf\Flextech.Replicador.Wpf.csproj", "{DCCDEA49-E784-46C1-A2C3-D05F06554649}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 - Docs", "00 - Docs", "{42AE4AD8-955D-4D9E-8993-E7871AF8A866}"
+	ProjectSection(SolutionItems) = preProject
+		..\FLEXTECH_TFS_OLD\Anotações.txt = ..\FLEXTECH_TFS_OLD\Anotações.txt
+		..\FLEXTECH_TFS_OLD\Cabecalho.txt = ..\FLEXTECH_TFS_OLD\Cabecalho.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flextech.Infra.Web", "Flextech.Infra.Web\Flextech.Infra.Web.csproj", "{45A8FEDD-7697-49B0-91DF-EC5E38C40A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flextech.Modbus", "Flextech.Modbus\Flextech.Modbus.csproj", "{FBC6EF35-294F-44DA-B1C1-36A1FD26CEE0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CE0C406-A6C2-488A-9539-AF7530004233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE0C406-A6C2-488A-9539-AF7530004233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE0C406-A6C2-488A-9539-AF7530004233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE0C406-A6C2-488A-9539-AF7530004233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E49D30-C6CA-42BD-9D1C-4A400FE17831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E49D30-C6CA-42BD-9D1C-4A400FE17831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E49D30-C6CA-42BD-9D1C-4A400FE17831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E49D30-C6CA-42BD-9D1C-4A400FE17831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107A173E-5424-4CD2-B834-2C2C7CA92C10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107A173E-5424-4CD2-B834-2C2C7CA92C10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107A173E-5424-4CD2-B834-2C2C7CA92C10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107A173E-5424-4CD2-B834-2C2C7CA92C10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCCDEA49-E784-46C1-A2C3-D05F06554649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCDEA49-E784-46C1-A2C3-D05F06554649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCDEA49-E784-46C1-A2C3-D05F06554649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCDEA49-E784-46C1-A2C3-D05F06554649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45A8FEDD-7697-49B0-91DF-EC5E38C40A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A8FEDD-7697-49B0-91DF-EC5E38C40A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A8FEDD-7697-49B0-91DF-EC5E38C40A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A8FEDD-7697-49B0-91DF-EC5E38C40A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBC6EF35-294F-44DA-B1C1-36A1FD26CEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBC6EF35-294F-44DA-B1C1-36A1FD26CEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBC6EF35-294F-44DA-B1C1-36A1FD26CEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBC6EF35-294F-44DA-B1C1-36A1FD26CEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F23F490-FCDA-4ABF-9D56-3D28A1F9B57E}
+	EndGlobalSection
+EndGlobal

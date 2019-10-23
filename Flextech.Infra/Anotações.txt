@@ -1,0 +1,18 @@
+﻿
+Executar somente uma instância da aplicação
+execute only one instance application
+How to Restrict the Application to Just One Instance
+https://www.c-sharpcorner.com/UploadFile/f9f215/how-to-restrict-the-application-to-just-one-instance/
+
+
+BackgroundWorker Class
+https://docs.microsoft.com/pt-br/dotnet/api/system.componentmodel.backgroundworker?view=netframework-4.8
+
+Timer Class
+https://docs.microsoft.com/pt-br/dotnet/api/system.timers.timer?view=netframework-4.8
+
+Tutorial: Criar um aplicativo de serviço Windows
+https://docs.microsoft.com/pt-br/dotnet/framework/windows-services/walkthrough-creating-a-windows-service-application-in-the-component-designer
+
+Programação assíncrona com async e await
+https://docs.microsoft.com/pt-br/dotnet/csharp/programming-guide/concepts/async/

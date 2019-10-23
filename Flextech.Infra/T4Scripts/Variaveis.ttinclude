@@ -1,0 +1,108 @@
+﻿<#+
+
+	//public System.Collections.Generic.Dictionary<string, string> DicionarioChaveValor; // = new System.Collections.Generic.Dictionary<string, string>();
+	//
+	//
+	//public string CALCULADOR_RENDIMENTO_ObterValorDaVariavelPorChave(string chave)
+	//{
+	//	string valor = "CHAVE_INEXISTENTE -> " + chave;
+	//
+	//	DicionarioChaveValor = new System.Collections.Generic.Dictionary<string, string>();
+	//
+	//	VariaveisPadrao();
+	//
+	//	DicionarioChaveValor.Add("ConexaoBaseDeDados",				@"Server=.\SQL2017;Database=CALCULADOR_RENDIMENTO;User Id=sa;Password=lls1;");
+	//
+	//	DicionarioChaveValor.Add("Namespace",						@"Flextech.Calculador.Rendimento");
+	//	DicionarioChaveValor.Add("NamespaceNegocio",				@"Flextech.Calculador.Rendimento.Negocio");
+	//    DicionarioChaveValor.Add("NamespaceModeloDeDados",	        @"Flextech.Calculador.Rendimento.Modelos.ModeloDeDados");
+	//    DicionarioChaveValor.Add("NamespaceModeloDePersistencia",	@"Flextech.Calculador.Rendimento.Modelos.ModeloDePersistencia");
+	//
+	//	try 
+	//	{	        
+	//		valor = DicionarioChaveValor[chave];
+	//	}
+	//	catch (Exception ex)
+	//	{
+	//		valor += " - Exception: " + ex.Message;
+	//	}
+	//
+	//	return valor;
+	//}
+	//
+	//public string REPLICADOR_GetVariableValueByKey(string key)
+	//{
+	//	string value = "CHAVE_INEXISTENTE -> " + key;
+	//
+	//	DicionarioChaveValor = new System.Collections.Generic.Dictionary<string, string>();
+	//
+	//	VariaveisPadrao();
+	//
+	//	DicionarioChaveValor.Add("DBConnectionString",				        @"Server=.\SQL2016;Database=REPLICADOR;User Id=sa;Password=lls1;");
+	//
+	//	DicionarioChaveValor.Add("Namespace",						        @"Flextech.Replicador");
+	//	DicionarioChaveValor.Add("NamespaceNegocio",					        @"Flextech.Replicador.Negocio");
+	//    DicionarioChaveValor.Add("NamespaceNegocioModeloDeDados",	        @"Flextech.Replicador.Negocio.Modelos.ModeloDeDados");
+	//    DicionarioChaveValor.Add("NamespaceNegocioModeloDePersistencia",	    @"Flextech.Replicador.Negocio.Modelos.ModeloDePersistencia");
+	//
+	//	try 
+	//	{	        
+	//		value = DicionarioChaveValor[key];
+	//	}
+	//	catch (Exception ex)
+	//	{
+	//		value += " - Exception: " + ex.Message;
+	//	}
+	//
+	//	return value;
+	//}
+	//
+	//public string SimpleFarma_GetVariableValueByKey(string key)
+	//{
+	//	string value = "CHAVE_INEXISTENTE -> " + key;
+	//
+	//	DicionarioChaveValor = new System.Collections.Generic.Dictionary<string, string>();
+	//
+	//	VariaveisPadrao();
+	//
+	//	DicionarioChaveValor.Add("Namespace",						@"Flextech.Replicator");
+	//	DicionarioChaveValor.Add("NamespaceClasses",					@"Flextech.Replicator.Business.Classes");
+	//	DicionarioChaveValor.Add("NamespaceDatabase",				@"Flextech.Replicator.Business.Database");
+	//	DicionarioChaveValor.Add("NamespaceEntities",				@"Flextech.Replicator.Business.Entities");
+	//	
+	//	
+	//	DicionarioChaveValor.Add("Path",								@"C:\LESANTANA\SISTEMAS\FLEXTECH.TFS\REPLICATOR");
+	//
+	//	DicionarioChaveValor.Add("DBServerOrIP",						@"LESANTANA-MAC");
+	//	DicionarioChaveValor.Add("DBLogin",							@"sa");
+	//	DicionarioChaveValor.Add("DBPassword",						@"lls1");
+	//	DicionarioChaveValor.Add("DBDatabase",						@"REPLICATOR");
+	//	DicionarioChaveValor.Add("DBConnectionString",				@"Server=.\SQL2016;Database=FLEXTECH;User Id=sa;Password=lls1;");
+	//
+	//	DicionarioChaveValor.Add("aaa",						@"aaa");
+	//
+	//
+	//    try 
+	//    {	        
+	//		value = DicionarioChaveValor[key];
+	//    }
+	//    catch (Exception ex)
+	//    {
+	//		value += " - Exception: " + ex.Message;
+	//    }
+	//
+	//	return value;
+	//}
+	//
+	//public void VariaveisPadrao()
+	//{
+	//	DicionarioChaveValor.Add("SpPrefixo",			@"zusp__");
+	//
+	//	DicionarioChaveValor.Add("SpExcluirPorID",		@"__excluir_por_id");
+	//	DicionarioChaveValor.Add("SpExcluirPorTOKEN",	@"__excluir_por_token");
+	//
+	//	DicionarioChaveValor.Add("SpSalvar",			@"__salvar");
+	//
+	//	DicionarioChaveValor.Add("SpSelecionar",		@"__selecionar");
+	//}
+#>

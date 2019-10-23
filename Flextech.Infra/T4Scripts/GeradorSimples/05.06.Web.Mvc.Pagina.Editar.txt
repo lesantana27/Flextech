@@ -1,0 +1,2244 @@
+﻿
+
+
+
+#########################################################################################################################################
+BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Balanca
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.BalancaRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Balanca" : "Editar Balanca";
+}
+
+<div class="content-heading">
+    <div>
+        Balancas
+        <small>Cadastro geral de Balancas</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Balancas</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Balanca/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">IhmId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="ihm__id" name="ihm__id" placeholder="IhmId" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.IHM__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeBalanca:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_balanca" name="nome_balanca" placeholder="NomeBalanca" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.NOME_BALANCA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">SiglaBalanca:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="sigla_balanca" name="sigla_balanca" placeholder="SiglaBalanca" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.SIGLA_BALANCA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">MarcaBalanca:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="marca_balanca" name="marca_balanca" placeholder="MarcaBalanca" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.MARCA_BALANCA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ModeloBalanca:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="modelo_balanca" name="modelo_balanca" placeholder="ModeloBalanca" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.MODELO_BALANCA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PesoAcumulado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso_acumulado" name="peso_acumulado" placeholder="PesoAcumulado" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.PESO_ACUMULADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.BalancaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Balanca/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA - BALANCA
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) BalancaHistorico" : "Editar BalancaHistorico";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistoricos
+        <small>Cadastro geral de BalancaHistoricos</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de BalancaHistoricos</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/BalancaHistorico/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id" name="balanca__id" placeholder="BalancaId" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Peso:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso" name="peso" placeholder="Peso" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.PESO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RegistroProcessado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="registro_processado" name="registro_processado" placeholder="RegistroProcessado" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_PROCESSADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataProcessamento:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_processamento" name="data_processamento" placeholder="DataProcessamento" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.DATA_PROCESSAMENTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.BalancaHistoricoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO - BALANCA_HISTORICO
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico01H
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) BalancaHistorico01H" : "Editar BalancaHistorico01H";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico01Hs
+        <small>Cadastro geral de BalancaHistorico01Hs</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de BalancaHistorico01Hs</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01H/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id" name="balanca__id" placeholder="BalancaId" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Peso:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso" name="peso" placeholder="Peso" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.PESO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ReferenteAHora:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="referente_a_hora" name="referente_a_hora" placeholder="ReferenteAHora" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REFERENTE_A_HORA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RegistroProcessado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="registro_processado" name="registro_processado" placeholder="RegistroProcessado" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_PROCESSADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataProcessamento:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_processamento" name="data_processamento" placeholder="DataProcessamento" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.DATA_PROCESSAMENTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.BalancaHistorico01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01H/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H - BALANCA_HISTORICO_01_H
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico01M
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) BalancaHistorico01M" : "Editar BalancaHistorico01M";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico01Ms
+        <small>Cadastro geral de BalancaHistorico01Ms</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de BalancaHistorico01Ms</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01M/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id" name="balanca__id" placeholder="BalancaId" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Peso:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso" name="peso" placeholder="Peso" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.PESO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ReferenteAoMinuto:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="referente_ao_minuto" name="referente_ao_minuto" placeholder="ReferenteAoMinuto" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REFERENTE_AO_MINUTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RegistroProcessado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="registro_processado" name="registro_processado" placeholder="RegistroProcessado" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_PROCESSADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataProcessamento:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_processamento" name="data_processamento" placeholder="DataProcessamento" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.DATA_PROCESSAMENTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.BalancaHistorico01MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico01M/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M - BALANCA_HISTORICO_01_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico05M
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) BalancaHistorico05M" : "Editar BalancaHistorico05M";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico05Ms
+        <small>Cadastro geral de BalancaHistorico05Ms</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de BalancaHistorico05Ms</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/BalancaHistorico05M/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id" name="balanca__id" placeholder="BalancaId" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Peso:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso" name="peso" placeholder="Peso" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.PESO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ReferenteAoMinuto:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="referente_ao_minuto" name="referente_ao_minuto" placeholder="ReferenteAoMinuto" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REFERENTE_AO_MINUTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RegistroProcessado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="registro_processado" name="registro_processado" placeholder="RegistroProcessado" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_PROCESSADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataProcessamento:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_processamento" name="data_processamento" placeholder="DataProcessamento" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.DATA_PROCESSAMENTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.BalancaHistorico05MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico05M/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M - BALANCA_HISTORICO_05_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico15M
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) BalancaHistorico15M" : "Editar BalancaHistorico15M";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico15Ms
+        <small>Cadastro geral de BalancaHistorico15Ms</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de BalancaHistorico15Ms</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/BalancaHistorico15M/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id" name="balanca__id" placeholder="BalancaId" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Peso:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso" name="peso" placeholder="Peso" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.PESO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ReferenteAoMinuto:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="referente_ao_minuto" name="referente_ao_minuto" placeholder="ReferenteAoMinuto" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REFERENTE_AO_MINUTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RegistroProcessado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="registro_processado" name="registro_processado" placeholder="RegistroProcessado" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_PROCESSADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataProcessamento:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_processamento" name="data_processamento" placeholder="DataProcessamento" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.DATA_PROCESSAMENTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.BalancaHistorico15MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico15M/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M - BALANCA_HISTORICO_15_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.BalancaHistorico30M
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) BalancaHistorico30M" : "Editar BalancaHistorico30M";
+}
+
+<div class="content-heading">
+    <div>
+        BalancaHistorico30Ms
+        <small>Cadastro geral de BalancaHistorico30Ms</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de BalancaHistorico30Ms</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/BalancaHistorico30M/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id" name="balanca__id" placeholder="BalancaId" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Peso:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso" name="peso" placeholder="Peso" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.PESO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ReferenteAoMinuto:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="referente_ao_minuto" name="referente_ao_minuto" placeholder="ReferenteAoMinuto" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REFERENTE_AO_MINUTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RegistroProcessado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="registro_processado" name="registro_processado" placeholder="RegistroProcessado" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_PROCESSADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataProcessamento:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_processamento" name="data_processamento" placeholder="DataProcessamento" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.DATA_PROCESSAMENTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.BalancaHistorico30MRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/BalancaHistorico30M/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M - BALANCA_HISTORICO_30_M
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Diagrama
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Diagrama" : "Editar Diagrama";
+}
+
+<div class="content-heading">
+    <div>
+        Diagramas
+        <small>Cadastro geral de Diagramas</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Diagramas</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Diagrama/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">IhmId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="ihm__id" name="ihm__id" placeholder="IhmId" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.IHM__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaIdEntrada:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id__entrada" name="balanca__id__entrada" placeholder="BalancaIdEntrada" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID__ENTRADA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaIdSaida1:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id__saida_1" name="balanca__id__saida_1" placeholder="BalancaIdSaida1" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID__SAIDA_1">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaIdSaida2:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id__saida_2" name="balanca__id__saida_2" placeholder="BalancaIdSaida2" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID__SAIDA_2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaIdSaida3:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id__saida_3" name="balanca__id__saida_3" placeholder="BalancaIdSaida3" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID__SAIDA_3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaIdSaida4:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id__saida_4" name="balanca__id__saida_4" placeholder="BalancaIdSaida4" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID__SAIDA_4">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaIdSaida5:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca__id__saida_5" name="balanca__id__saida_5" placeholder="BalancaIdSaida5" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA__ID__SAIDA_5">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeDiagrama:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_diagrama" name="nome_diagrama" placeholder="NomeDiagrama" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.NOME_DIAGRAMA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaEntradaAtiva:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_entrada_ativa" name="balanca_entrada_ativa" placeholder="BalancaEntradaAtiva" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_ENTRADA_ATIVA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida1Ativa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_1_ativa" name="balanca_saida_1_ativa" placeholder="BalancaSaida1Ativa" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_1_ATIVA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida2Ativa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_2_ativa" name="balanca_saida_2_ativa" placeholder="BalancaSaida2Ativa" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_2_ATIVA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida3Ativa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_3_ativa" name="balanca_saida_3_ativa" placeholder="BalancaSaida3Ativa" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_3_ATIVA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida4Ativa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_4_ativa" name="balanca_saida_4_ativa" placeholder="BalancaSaida4Ativa" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_4_ATIVA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida5Ativa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_5_ativa" name="balanca_saida_5_ativa" placeholder="BalancaSaida5Ativa" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_5_ATIVA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaEntradaParticipaCalculo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_entrada_participa_calculo" name="balanca_entrada_participa_calculo" placeholder="BalancaEntradaParticipaCalculo" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_ENTRADA_PARTICIPA_CALCULO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida1ParticipaCalculo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_1_participa_calculo" name="balanca_saida_1_participa_calculo" placeholder="BalancaSaida1ParticipaCalculo" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_1_PARTICIPA_CALCULO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida2ParticipaCalculo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_2_participa_calculo" name="balanca_saida_2_participa_calculo" placeholder="BalancaSaida2ParticipaCalculo" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_2_PARTICIPA_CALCULO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida3ParticipaCalculo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_3_participa_calculo" name="balanca_saida_3_participa_calculo" placeholder="BalancaSaida3ParticipaCalculo" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_3_PARTICIPA_CALCULO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida4ParticipaCalculo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_4_participa_calculo" name="balanca_saida_4_participa_calculo" placeholder="BalancaSaida4ParticipaCalculo" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_4_PARTICIPA_CALCULO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">BalancaSaida5ParticipaCalculo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="balanca_saida_5_participa_calculo" name="balanca_saida_5_participa_calculo" placeholder="BalancaSaida5ParticipaCalculo" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.BALANCA_SAIDA_5_PARTICIPA_CALCULO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DiagramaAtivo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="diagrama_ativo" name="diagrama_ativo" placeholder="DiagramaAtivo" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.DIAGRAMA_ATIVO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.DiagramaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Diagrama/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA - DIAGRAMA
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Email
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.EmailRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Email" : "Editar Email";
+}
+
+<div class="content-heading">
+    <div>
+        Emails
+        <small>Cadastro geral de Emails</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Emails</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Email/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomePessoa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_pessoa" name="nome_pessoa" placeholder="NomePessoa" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.NOME_PESSOA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">EmailPessoa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="email_pessoa" name="email_pessoa" placeholder="EmailPessoa" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.EMAIL_PESSOA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">EmailAtivo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="email_ativo" name="email_ativo" placeholder="EmailAtivo" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.EMAIL_ATIVO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.EmailRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Email/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL - EMAIL
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+IHM - IHM - IHM - IHM - IHM - IHM - IHM
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Ihm
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.IhmRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Ihm" : "Editar Ihm";
+}
+
+<div class="content-heading">
+    <div>
+        Ihms
+        <small>Cadastro geral de Ihms</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Ihms</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Ihm/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeIhm:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_ihm" name="nome_ihm" placeholder="NomeIhm" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.NOME_IHM">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">SiglaIhm:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="sigla_ihm" name="sigla_ihm" placeholder="SiglaIhm" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.SIGLA_IHM">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">MarcaIhm:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="marca_ihm" name="marca_ihm" placeholder="MarcaIhm" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.MARCA_IHM">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ModeloIhm:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="modelo_ihm" name="modelo_ihm" placeholder="ModeloIhm" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.MODELO_IHM">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RedeTcpHabilitar:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="rede_tcp_habilitar" name="rede_tcp_habilitar" placeholder="RedeTcpHabilitar" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REDE_TCP_HABILITAR">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RedeTcpIp:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="rede_tcp_ip" name="rede_tcp_ip" placeholder="RedeTcpIp" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REDE_TCP_IP">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">RedeTcpPorta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="rede_tcp_porta" name="rede_tcp_porta" placeholder="RedeTcpPorta" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REDE_TCP_PORTA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.IhmRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Ihm/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+IHM - IHM - IHM - IHM - IHM - IHM - IHM
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.ParametroSistema
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) ParametroSistema" : "Editar ParametroSistema";
+}
+
+<div class="content-heading">
+    <div>
+        ParametroSistemas
+        <small>Cadastro geral de ParametroSistemas</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de ParametroSistemas</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/ParametroSistema/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeParametro:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_parametro" name="nome_parametro" placeholder="NomeParametro" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.NOME_PARAMETRO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ValorParametro:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="valor_parametro" name="valor_parametro" placeholder="ValorParametro" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.VALOR_PARAMETRO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ParametroAtivo:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="parametro_ativo" name="parametro_ativo" placeholder="ParametroAtivo" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.PARAMETRO_ATIVO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.ParametroSistemaRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/ParametroSistema/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA - PARAMETRO_SISTEMA
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Producao
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Producao" : "Editar Producao";
+}
+
+<div class="content-heading">
+    <div>
+        Producaos
+        <small>Cadastro geral de Producaos</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Producaos</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Producao/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DiagramaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="diagrama__id" name="diagrama__id" placeholder="DiagramaId" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.DIAGRAMA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoIdEntrada:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto__id__entrada" name="produto__id__entrada" placeholder="ProdutoIdEntrada" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.PRODUTO__ID__ENTRADA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoIdSaida1:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto__id__saida_1" name="produto__id__saida_1" placeholder="ProdutoIdSaida1" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.PRODUTO__ID__SAIDA_1">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoIdSaida2:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto__id__saida_2" name="produto__id__saida_2" placeholder="ProdutoIdSaida2" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.PRODUTO__ID__SAIDA_2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoIdSaida3:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto__id__saida_3" name="produto__id__saida_3" placeholder="ProdutoIdSaida3" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.PRODUTO__ID__SAIDA_3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoIdSaida4:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto__id__saida_4" name="produto__id__saida_4" placeholder="ProdutoIdSaida4" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.PRODUTO__ID__SAIDA_4">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoIdSaida5:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto__id__saida_5" name="produto__id__saida_5" placeholder="ProdutoIdSaida5" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.PRODUTO__ID__SAIDA_5">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeDiagrama:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_diagrama" name="nome_diagrama" placeholder="NomeDiagrama" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.NOME_DIAGRAMA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NumeroOrdemProducao:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="numero_ordem_producao" name="numero_ordem_producao" placeholder="NumeroOrdemProducao" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.NUMERO_ORDEM_PRODUCAO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeOperador:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_operador" name="nome_operador" placeholder="NomeOperador" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.NOME_OPERADOR">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataInicio:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_inicio" name="data_inicio" placeholder="DataInicio" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.DATA_INICIO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataTermino:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_termino" name="data_termino" placeholder="DataTermino" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.DATA_TERMINO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PorcentagemUmidade:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="porcentagem_umidade" name="porcentagem_umidade" placeholder="PorcentagemUmidade" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.PORCENTAGEM_UMIDADE">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoEntradaEstimado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_entrada_estimado" name="quantidade_produto_entrada_estimado" placeholder="QuantidadeProdutoEntradaEstimado" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_ENTRADA_ESTIMADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida1Estimado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_1_estimado" name="quantidade_produto_saida_1_estimado" placeholder="QuantidadeProdutoSaida1Estimado" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_1_ESTIMADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida2Estimado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_2_estimado" name="quantidade_produto_saida_2_estimado" placeholder="QuantidadeProdutoSaida2Estimado" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_2_ESTIMADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida3Estimado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_3_estimado" name="quantidade_produto_saida_3_estimado" placeholder="QuantidadeProdutoSaida3Estimado" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_3_ESTIMADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida4Estimado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_4_estimado" name="quantidade_produto_saida_4_estimado" placeholder="QuantidadeProdutoSaida4Estimado" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_4_ESTIMADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida5Estimado:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_5_estimado" name="quantidade_produto_saida_5_estimado" placeholder="QuantidadeProdutoSaida5Estimado" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_5_ESTIMADO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoEntradaReal:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_entrada_real" name="quantidade_produto_entrada_real" placeholder="QuantidadeProdutoEntradaReal" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_ENTRADA_REAL">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida1Real:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_1_real" name="quantidade_produto_saida_1_real" placeholder="QuantidadeProdutoSaida1Real" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_1_REAL">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida2Real:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_2_real" name="quantidade_produto_saida_2_real" placeholder="QuantidadeProdutoSaida2Real" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_2_REAL">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida3Real:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_3_real" name="quantidade_produto_saida_3_real" placeholder="QuantidadeProdutoSaida3Real" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_3_REAL">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida4Real:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_4_real" name="quantidade_produto_saida_4_real" placeholder="QuantidadeProdutoSaida4Real" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_4_REAL">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">QuantidadeProdutoSaida5Real:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="quantidade_produto_saida_5_real" name="quantidade_produto_saida_5_real" placeholder="QuantidadeProdutoSaida5Real" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.QUANTIDADE_PRODUTO_SAIDA_5_REAL">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.ProducaoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Producao/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO - PRODUCAO
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Produto
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Produto" : "Editar Produto";
+}
+
+<div class="content-heading">
+    <div>
+        Produtos
+        <small>Cadastro geral de Produtos</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Produtos</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Produto/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">CodigoProduto:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="codigo_produto" name="codigo_produto" placeholder="CodigoProduto" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.CODIGO_PRODUTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeProduto:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_produto" name="nome_produto" placeholder="NomeProduto" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.NOME_PRODUTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PorcentagemUmidade:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="porcentagem_umidade" name="porcentagem_umidade" placeholder="PorcentagemUmidade" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.PORCENTAGEM_UMIDADE">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoEntrada:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto_entrada" name="produto_entrada" placeholder="ProdutoEntrada" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.PRODUTO_ENTRADA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ProdutoSaida:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="produto_saida" name="produto_saida" placeholder="ProdutoSaida" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.PRODUTO_SAIDA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.ProdutoRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Produto/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO - PRODUTO
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Rendimento01H
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Rendimento01H" : "Editar Rendimento01H";
+}
+
+<div class="content-heading">
+    <div>
+        Rendimento01Hs
+        <small>Cadastro geral de Rendimento01Hs</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Rendimento01Hs</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Rendimento01H/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DiagramaId:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="diagrama__id" name="diagrama__id" placeholder="DiagramaId" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.DIAGRAMA__ID">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ReferenteAHora:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="referente_a_hora" name="referente_a_hora" placeholder="ReferenteAHora" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REFERENTE_A_HORA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PesoEntrada:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso_entrada" name="peso_entrada" placeholder="PesoEntrada" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.PESO_ENTRADA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PesoSaida1:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso_saida_1" name="peso_saida_1" placeholder="PesoSaida1" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.PESO_SAIDA_1">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PesoSaida2:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso_saida_2" name="peso_saida_2" placeholder="PesoSaida2" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.PESO_SAIDA_2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PesoSaida3:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso_saida_3" name="peso_saida_3" placeholder="PesoSaida3" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.PESO_SAIDA_3">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PesoSaida4:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso_saida_4" name="peso_saida_4" placeholder="PesoSaida4" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.PESO_SAIDA_4">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">PesoSaida5:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="peso_saida_5" name="peso_saida_5" placeholder="PesoSaida5" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.PESO_SAIDA_5">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Rendimento:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="rendimento" name="rendimento" placeholder="Rendimento" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.RENDIMENTO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">SomaSaidas:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="soma_saidas" name="soma_saidas" placeholder="SomaSaidas" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.SOMA_SAIDAS">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">DataColeta:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="data_coleta" name="data_coleta" placeholder="DataColeta" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.DATA_COLETA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.Rendimento01HRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Rendimento01H/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H - RENDIMENTO_01_H
+#########################################################################################################################################
+
+
+
+#########################################################################################################################################
+USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.Usuario
+@{
+    ViewBag.Title = "Editar";
+
+    string nomeTela = Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.ID == 0 ? "Novo(a) Usuario" : "Editar Usuario";
+}
+
+<div class="content-heading">
+    <div>
+        Usuarios
+        <small>Cadastro geral de Usuarios</small>
+    </div>
+</div>
+
+<div class="card card-default">
+    <div class="card-header"><h3 class="card-title">Cadastro geral de Usuarios</h3></div>
+    <div class="card-body">
+        <form class="form-horizontal" method="post" action="/@ViewBag.USUARIO_TOKEN/Usuario/Editar/">
+            @Html.AntiForgeryToken()
+            @if (Session["ExisteErro"] != null && ((bool)Session["ExisteErro"]) == true)
+            {
+                Session["ExisteErro"] = false;
+            <div class="form-group row">
+                <div class="col-xl-2">
+                    
+                </div>
+                <div class="card border-danger">
+                    <div class="card-header text-white bg-danger text-center">Ops! Alguma coisa deu errado :(</div>
+                    <div class="card-body">
+                        <p class="card-text">@Session["TextoDaMensagemDeErro"].ToString()</p>
+                    </div>
+                </div>
+
+            </div>
+            }
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">ID #:</label>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="id" name="id" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.ID" readonly="readonly">
+                </div>
+                <div class="col-xl-5">
+                    <input class="form-control" type="text" id="token" name="token" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.TOKEN" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomeUsuario:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_usuario" name="nome_usuario" placeholder="NomeUsuario" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.NOME_USUARIO">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">NomePessoa:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="nome_pessoa" name="nome_pessoa" placeholder="NomePessoa" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.NOME_PESSOA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Senha:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="senha" name="senha" placeholder="Senha" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.SENHA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Admin:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="admin" name="admin" placeholder="Admin" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.ADMIN">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">UsuarioToken:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="usuario_token" name="usuario_token" placeholder="UsuarioToken" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.USUARIO_TOKEN">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">UsuarioTokenValidade:</label>
+                <div class="col-xl-10">
+                    <input class="form-control" type="text" id="usuario_token_validade" name="usuario_token_validade" placeholder="UsuarioTokenValidade" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.USUARIO_TOKEN_VALIDADE">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro criado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_data" name="registro_criado_data" placeholder="Data" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_criado_usuario" name="registro_criado_usuario" placeholder="Usuário" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_USUARIO"  readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_computador" name="registro_criado_computador" placeholder="Computador" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_criado_ip" name="registro_criado_ip" placeholder="IP" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_CRIADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-xl-2 col-form-label text-right">Registro atualizado em:</label>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_data" name="registro_atualizado_data" placeholder="Data" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_DATA.ToString("dd/MM/yyyy HH:mm:ss")" readonly="readonly">
+                </div>
+                <div class="col-xl-2">
+                    <input class="form-control" type="text" id="registro_atualizado_usuario" name="registro_atualizado_usuario" placeholder="Usuário" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_USUARIO" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_computador" name="registro_atualizado_computador" placeholder="Computador" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_COMPUTADOR" readonly="readonly">
+                </div>
+                <div class="col-xl-3">
+                    <input class="form-control" type="text" id="registro_atualizado_ip" name="registro_atualizado_ip" placeholder="IP" value="@Model.UsuarioRegistroAtivo.RegistroDaVisualizacao.REGISTRO_ATUALIZADO_IP" readonly="readonly">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-xl-2 text-center">
+                    <a class="btn btn-labeled btn-danger mb-2" href="/@ViewBag.USUARIO_TOKEN/Usuario/Indice/"><span class="btn-label"><i class="fa fa-times"></i></span>Cancelar</a>
+                </div>
+                <div class="col-xl-8 text-center">
+                </div>
+                <div class="col-xl-2 text-center">
+                    <button class="btn btn-labeled btn-success mb-2" type="submit"><span class="btn-label"><i class="fa fa-check"></i></span>Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#########################################################################################################################################
+USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO - USUARIO
+#########################################################################################################################################
+
+
+
+
+

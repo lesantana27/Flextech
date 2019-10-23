@@ -1,0 +1,71 @@
+﻿
+
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: Modelo\Gerado\Usuario.gerado.cs
+Espaço de nome...: Flextech.Calculador.Rendimento.Web
+Classe...........: Usuario.gerado.cs
+Descrição........: Modelo de dados para a Web
+==================================================================================
+Criação..........: 22/01/2018 - Lessandro Santana
+Alteração........: 27/05/2019 - Lessandro Santana
+==================================================================================
+Gerado em........: 29/05/2019 16:22:25
+
+Arquivo gerado automaticamente pelo Replicador da Flextech.
+
+NÃO EDITE ESTE ARQUIVO.
+TODAS AS ALTERAÇÕES FEITAS AQUI PODERÃO SER PERDIDAS.
+==================================================================================
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Flextech.Calculador.Rendimento.Web.Modelo
+{
+    public partial class Usuario : Flextech.Infra.Web.Base.ModeloBase
+    {
+        public Flextech.Calculador.Rendimento.RegistroAtivo.USUARIO UsuarioRegistroAtivo { get; set; }
+
+        public Usuario(string nomeComputador, string nomeUsuario, string enderecoIP) : base(nomeComputador, nomeUsuario, enderecoIP)
+        {
+            this.UsuarioRegistroAtivo = new Flextech.Calculador.Rendimento.RegistroAtivo.USUARIO(nomeComputador, nomeUsuario, enderecoIP);
+        }
+
+        public void CarregarTodos()
+        {
+            this.UsuarioRegistroAtivo.ColecaoDeErros.Clear();
+            this.UsuarioRegistroAtivo.Parametros.Clear();
+
+            this.UsuarioRegistroAtivo.SelecionarDaVisualizacao(this.UsuarioRegistroAtivo.Parametros);
+
+            base.ColecaoDeErros = this.UsuarioRegistroAtivo.ColecaoDeErros;
+        }
+
+        public void SelecionarDaVisualizacaoPorID(int id)
+        {
+            this.UsuarioRegistroAtivo.ColecaoDeErros.Clear();
+            this.UsuarioRegistroAtivo.Parametros.Clear();
+
+            this.UsuarioRegistroAtivo.Parametros.Add("ID", id);
+
+            this.UsuarioRegistroAtivo.SelecionarDaVisualizacao(this.UsuarioRegistroAtivo.Parametros);
+
+            base.ColecaoDeErros = this.UsuarioRegistroAtivo.ColecaoDeErros;
+        }
+
+        public void SalvarRegistroDaVisualizacao()
+        {
+            this.UsuarioRegistroAtivo.ColecaoDeErros.Clear();
+
+            this.UsuarioRegistroAtivo.SalvarRegistroDaVisualizacao(recarregarRegistroDaVisualizacao: false);
+
+            base.ColecaoDeErros = this.UsuarioRegistroAtivo.ColecaoDeErros;
+        }
+    }
+}

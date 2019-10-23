@@ -1,0 +1,8 @@
+﻿
+
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Negocio
+Arquivo..........: RegistroAtivo\Gerado\.gerado.cs
+Espaço de nome...: 

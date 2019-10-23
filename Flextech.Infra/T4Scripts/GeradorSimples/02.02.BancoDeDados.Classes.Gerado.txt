@@ -1,0 +1,331 @@
+﻿
+
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: BancoDeDados\Gerado\USUARIO.gerado.cs
+Espaço de nome...: Flextech.Calculador.Rendimento.BancoDeDados
+Classe...........: USUARIO_TB e USUARIO_VW
+Descrição........: Classe USUARIO_TB e USUARIO_VW Geradas. 
+==================================================================================
+Criação..........: 22/01/2018 - Lessandro Santana
+Alteração........: 17/09/2019 - Lessandro Santana
+==================================================================================
+Gerado em........: 17/09/2019 12:47:12
+
+Arquivo gerado automaticamente pelo Replicador da Flextech.
+
+NÃO EDITE ESTE ARQUIVO.
+TODAS AS ALTERAÇÕES FEITAS AQUI PODERÃO SER PERDIDAS.
+==================================================================================
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+
+namespace Flextech.Calculador.Rendimento.BancoDeDados
+{
+    [DataContract]
+    public partial class USUARIO_TB : Flextech.Infra.Base.RegistroBase
+    {
+		#region Propriedades
+
+        [DataMember]
+        public override int ID { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___ID; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___ID, value); } }
+
+        [DataMember]
+        public string NOME_USUARIO { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___NOME_USUARIO; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___NOME_USUARIO, value); } }
+
+        [DataMember]
+        public string NOME_PESSOA { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___NOME_PESSOA; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___NOME_PESSOA, value); } }
+
+        [DataMember]
+        public string SENHA { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___SENHA; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___SENHA, value); } }
+
+        [DataMember]
+        public bool ADMIN { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___ADMIN; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___ADMIN, value); } }
+
+        [DataMember]
+        public Guid USUARIO_TOKEN { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___USUARIO_TOKEN; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___USUARIO_TOKEN, value); } }
+
+        [DataMember]
+        public DateTime USUARIO_TOKEN_VALIDADE { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___USUARIO_TOKEN_VALIDADE; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___USUARIO_TOKEN_VALIDADE, value); } }
+
+        [DataMember]
+        public Guid TOKEN { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___TOKEN; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___TOKEN, value); } }
+
+        [DataMember]
+        public DateTime REGISTRO_CRIADO_DATA { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_DATA; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_DATA, value); } }
+
+        [DataMember]
+        public string REGISTRO_CRIADO_USUARIO { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_USUARIO; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_USUARIO, value); } }
+
+        [DataMember]
+        public string REGISTRO_CRIADO_IP { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_IP; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_IP, value); } }
+
+        [DataMember]
+        public string REGISTRO_CRIADO_COMPUTADOR { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_COMPUTADOR; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_CRIADO_COMPUTADOR, value); } }
+
+        [DataMember]
+        public DateTime REGISTRO_ATUALIZADO_DATA { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_DATA; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_DATA, value); } }
+
+        [DataMember]
+        public string REGISTRO_ATUALIZADO_USUARIO { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_USUARIO; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_USUARIO, value); } }
+
+        [DataMember]
+        public string REGISTRO_ATUALIZADO_IP { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_IP; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_IP, value); } }
+
+        [DataMember]
+        public string REGISTRO_ATUALIZADO_COMPUTADOR { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_COMPUTADOR; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_COMPUTADOR, value); } }
+
+        [DataMember]
+        public bool REGISTRO_EXCLUIDO { get { return this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_EXCLUIDO; } set { ColocarNoCampo(ref this.ControleDosCamposDaTabela.ValorEditadoPeloUsuario___REGISTRO_EXCLUIDO, value); } }
+
+
+
+		[IgnoreDataMember]
+        [XmlIgnoreAttribute]
+		public ControleInternoDosCamposDaTabela ControleDosCamposDaTabela { get { if (_ControleDosCamposDaTabela == null) _ControleDosCamposDaTabela = new ControleInternoDosCamposDaTabela(); return this._ControleDosCamposDaTabela; } set { this._ControleDosCamposDaTabela = value; } }
+        private ControleInternoDosCamposDaTabela _ControleDosCamposDaTabela;
+
+		#endregion Propriedades
+
+		public USUARIO_TB()
+		{
+            InicializarPropriedadesComValoresPadrao(marcarRegistrosCarregadosDoBancoDeDados: false);
+
+            this.REGISTRO_CRIADO_USUARIO = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+            this.REGISTRO_CRIADO_IP = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+            this.REGISTRO_CRIADO_COMPUTADOR = Flextech.Infra.Estatico.Sistema.NomeComputador;
+
+            this.REGISTRO_ATUALIZADO_USUARIO = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+            this.REGISTRO_ATUALIZADO_IP = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+            this.REGISTRO_ATUALIZADO_COMPUTADOR = Flextech.Infra.Estatico.Sistema.NomeComputador;
+
+            MarcarRegistrosCarregadosDoBancoDeDados();
+		}
+
+        public USUARIO_TB(string nomeComputador, string nomeUsuario, string enderecoIP)
+        {
+            InicializarPropriedadesComValoresPadrao(marcarRegistrosCarregadosDoBancoDeDados: false);
+
+            this.REGISTRO_CRIADO_USUARIO = nomeUsuario;
+            this.REGISTRO_CRIADO_IP = enderecoIP;
+            this.REGISTRO_CRIADO_COMPUTADOR = nomeComputador;
+
+            this.REGISTRO_ATUALIZADO_USUARIO = nomeUsuario;
+            this.REGISTRO_ATUALIZADO_IP = enderecoIP;
+            this.REGISTRO_ATUALIZADO_COMPUTADOR = nomeComputador;
+
+            MarcarRegistrosCarregadosDoBancoDeDados();
+        }
+
+        public override void MarcarRegistrosCarregadosDoBancoDeDados()
+        {
+            this.ControleDosCamposDaTabela.MarcarRegistrosCarregadosDoBancoDeDados();
+        }
+
+        public override bool ExistemCamposEditados() 
+        {
+            return this.ControleDosCamposDaTabela.ExistemCamposEditados();
+        }
+
+        public override void InicializarPropriedadesComValoresPadrao(bool marcarRegistrosCarregadosDoBancoDeDados = true) 
+        {
+            this.ID = 0;
+            this.NOME_USUARIO = "";
+            this.NOME_PESSOA = "";
+            this.SENHA = "";
+            this.ADMIN = false;
+            this.USUARIO_TOKEN = Guid.NewGuid();
+            this.USUARIO_TOKEN_VALIDADE = new DateTime(2000, 1, 1);
+            this.TOKEN = Guid.NewGuid();
+            this.REGISTRO_CRIADO_DATA = DateTime.Now;
+            this.REGISTRO_CRIADO_USUARIO = "";
+            this.REGISTRO_CRIADO_IP = "";
+            this.REGISTRO_CRIADO_COMPUTADOR = "";
+            this.REGISTRO_ATUALIZADO_DATA = DateTime.Now;
+            this.REGISTRO_ATUALIZADO_USUARIO = "";
+            this.REGISTRO_ATUALIZADO_IP = "";
+            this.REGISTRO_ATUALIZADO_COMPUTADOR = "";
+            this.REGISTRO_EXCLUIDO = false;
+
+			
+			if (marcarRegistrosCarregadosDoBancoDeDados) MarcarRegistrosCarregadosDoBancoDeDados();
+		}
+
+        public override Dictionary<string, object> ObterDicionarioDePropriedades() 
+        {
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+
+            dic.Add("ID", this.ID);
+            dic.Add("NOME_USUARIO", this.NOME_USUARIO);
+            dic.Add("NOME_PESSOA", this.NOME_PESSOA);
+            dic.Add("SENHA", this.SENHA);
+            dic.Add("ADMIN", this.ADMIN);
+            dic.Add("USUARIO_TOKEN", this.USUARIO_TOKEN);
+            dic.Add("USUARIO_TOKEN_VALIDADE", this.USUARIO_TOKEN_VALIDADE);
+            dic.Add("TOKEN", this.TOKEN);
+            dic.Add("REGISTRO_CRIADO_DATA", this.REGISTRO_CRIADO_DATA);
+            dic.Add("REGISTRO_CRIADO_USUARIO", this.REGISTRO_CRIADO_USUARIO);
+            dic.Add("REGISTRO_CRIADO_IP", this.REGISTRO_CRIADO_IP);
+            dic.Add("REGISTRO_CRIADO_COMPUTADOR", this.REGISTRO_CRIADO_COMPUTADOR);
+            dic.Add("REGISTRO_ATUALIZADO_DATA", this.REGISTRO_ATUALIZADO_DATA);
+            dic.Add("REGISTRO_ATUALIZADO_USUARIO", this.REGISTRO_ATUALIZADO_USUARIO);
+            dic.Add("REGISTRO_ATUALIZADO_IP", this.REGISTRO_ATUALIZADO_IP);
+            dic.Add("REGISTRO_ATUALIZADO_COMPUTADOR", this.REGISTRO_ATUALIZADO_COMPUTADOR);
+            dic.Add("REGISTRO_EXCLUIDO", this.REGISTRO_EXCLUIDO);
+
+
+            if (this.ID == 0)
+            {
+                dic["REGISTRO_CRIADO_DATA"] = DateTime.Now;
+                dic["REGISTRO_CRIADO_USUARIO"] = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+                dic["REGISTRO_CRIADO_IP"] = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+                dic["REGISTRO_CRIADO_COMPUTADOR"] = Flextech.Infra.Estatico.Sistema.NomeComputador;
+            }
+            else
+            {
+                dic["REGISTRO_CRIADO_DATA"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_DATA;
+                dic["REGISTRO_CRIADO_USUARIO"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_USUARIO;
+                dic["REGISTRO_CRIADO_IP"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_IP;
+                dic["REGISTRO_CRIADO_COMPUTADOR"] = this.ControleDosCamposDaTabela.ValorNoBancoDeDados___REGISTRO_CRIADO_COMPUTADOR;
+            }
+
+            dic["REGISTRO_ATUALIZADO_DATA"] = DateTime.Now;
+            dic["REGISTRO_ATUALIZADO_USUARIO"] = Flextech.Infra.Estatico.Sistema.NomeUsuario;
+            dic["REGISTRO_ATUALIZADO_IP"] = Flextech.Infra.Estatico.Sistema.EnderecoIP;
+            dic["REGISTRO_ATUALIZADO_COMPUTADOR"] = Flextech.Infra.Estatico.Sistema.NomeComputador;
+            
+            return dic;
+        }
+		
+		#region Controle Interno dos Campos da Tabela
+
+		public class ControleInternoDosCamposDaTabela
+        {
+			#region Propriedades booleanas
+
+            public bool ID___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___ID != ValorNoBancoDeDados___ID; } }
+            public bool NOME_USUARIO___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___NOME_USUARIO != ValorNoBancoDeDados___NOME_USUARIO; } }
+            public bool NOME_PESSOA___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___NOME_PESSOA != ValorNoBancoDeDados___NOME_PESSOA; } }
+            public bool SENHA___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___SENHA != ValorNoBancoDeDados___SENHA; } }
+            public bool ADMIN___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___ADMIN != ValorNoBancoDeDados___ADMIN; } }
+            public bool USUARIO_TOKEN___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___USUARIO_TOKEN != ValorNoBancoDeDados___USUARIO_TOKEN; } }
+            public bool USUARIO_TOKEN_VALIDADE___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___USUARIO_TOKEN_VALIDADE != ValorNoBancoDeDados___USUARIO_TOKEN_VALIDADE; } }
+            public bool TOKEN___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___TOKEN != ValorNoBancoDeDados___TOKEN; } }
+            public bool REGISTRO_CRIADO_DATA___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_CRIADO_DATA != ValorNoBancoDeDados___REGISTRO_CRIADO_DATA; } }
+            public bool REGISTRO_CRIADO_USUARIO___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_CRIADO_USUARIO != ValorNoBancoDeDados___REGISTRO_CRIADO_USUARIO; } }
+            public bool REGISTRO_CRIADO_IP___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_CRIADO_IP != ValorNoBancoDeDados___REGISTRO_CRIADO_IP; } }
+            public bool REGISTRO_CRIADO_COMPUTADOR___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_CRIADO_COMPUTADOR != ValorNoBancoDeDados___REGISTRO_CRIADO_COMPUTADOR; } }
+            public bool REGISTRO_ATUALIZADO_DATA___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_DATA != ValorNoBancoDeDados___REGISTRO_ATUALIZADO_DATA; } }
+            public bool REGISTRO_ATUALIZADO_USUARIO___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_USUARIO != ValorNoBancoDeDados___REGISTRO_ATUALIZADO_USUARIO; } }
+            public bool REGISTRO_ATUALIZADO_IP___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_IP != ValorNoBancoDeDados___REGISTRO_ATUALIZADO_IP; } }
+            public bool REGISTRO_ATUALIZADO_COMPUTADOR___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_COMPUTADOR != ValorNoBancoDeDados___REGISTRO_ATUALIZADO_COMPUTADOR; } }
+            public bool REGISTRO_EXCLUIDO___CampoAlteradoPeloUsuario { get { return ValorEditadoPeloUsuario___REGISTRO_EXCLUIDO != ValorNoBancoDeDados___REGISTRO_EXCLUIDO; } }
+
+
+			#endregion Propriedades booleanas
+
+			#region Campos de valores do banco de dados
+
+            public int ValorNoBancoDeDados___ID;
+            public string ValorNoBancoDeDados___NOME_USUARIO;
+            public string ValorNoBancoDeDados___NOME_PESSOA;
+            public string ValorNoBancoDeDados___SENHA;
+            public bool ValorNoBancoDeDados___ADMIN;
+            public Guid ValorNoBancoDeDados___USUARIO_TOKEN;
+            public DateTime ValorNoBancoDeDados___USUARIO_TOKEN_VALIDADE;
+            public Guid ValorNoBancoDeDados___TOKEN;
+            public DateTime ValorNoBancoDeDados___REGISTRO_CRIADO_DATA;
+            public string ValorNoBancoDeDados___REGISTRO_CRIADO_USUARIO;
+            public string ValorNoBancoDeDados___REGISTRO_CRIADO_IP;
+            public string ValorNoBancoDeDados___REGISTRO_CRIADO_COMPUTADOR;
+            public DateTime ValorNoBancoDeDados___REGISTRO_ATUALIZADO_DATA;
+            public string ValorNoBancoDeDados___REGISTRO_ATUALIZADO_USUARIO;
+            public string ValorNoBancoDeDados___REGISTRO_ATUALIZADO_IP;
+            public string ValorNoBancoDeDados___REGISTRO_ATUALIZADO_COMPUTADOR;
+            public bool ValorNoBancoDeDados___REGISTRO_EXCLUIDO;
+
+
+			#endregion Campos de valores do banco de dados
+
+			#region Campos de valores editados pelo usuario
+
+            public int ValorEditadoPeloUsuario___ID;
+            public string ValorEditadoPeloUsuario___NOME_USUARIO;
+            public string ValorEditadoPeloUsuario___NOME_PESSOA;
+            public string ValorEditadoPeloUsuario___SENHA;
+            public bool ValorEditadoPeloUsuario___ADMIN;
+            public Guid ValorEditadoPeloUsuario___USUARIO_TOKEN;
+            public DateTime ValorEditadoPeloUsuario___USUARIO_TOKEN_VALIDADE;
+            public Guid ValorEditadoPeloUsuario___TOKEN;
+            public DateTime ValorEditadoPeloUsuario___REGISTRO_CRIADO_DATA;
+            public string ValorEditadoPeloUsuario___REGISTRO_CRIADO_USUARIO;
+            public string ValorEditadoPeloUsuario___REGISTRO_CRIADO_IP;
+            public string ValorEditadoPeloUsuario___REGISTRO_CRIADO_COMPUTADOR;
+            public DateTime ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_DATA;
+            public string ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_USUARIO;
+            public string ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_IP;
+            public string ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_COMPUTADOR;
+            public bool ValorEditadoPeloUsuario___REGISTRO_EXCLUIDO;
+
+
+			#endregion Campos de valores editados pelo usuario
+
+            public bool ExistemCamposEditados() // ou o status NOVO / CARREGADO_DO_BANCO / ALTERADO / SALVO
+            {
+                if (ID___CampoAlteradoPeloUsuario || NOME_USUARIO___CampoAlteradoPeloUsuario || NOME_PESSOA___CampoAlteradoPeloUsuario || SENHA___CampoAlteradoPeloUsuario || ADMIN___CampoAlteradoPeloUsuario || USUARIO_TOKEN___CampoAlteradoPeloUsuario || USUARIO_TOKEN_VALIDADE___CampoAlteradoPeloUsuario || TOKEN___CampoAlteradoPeloUsuario || REGISTRO_CRIADO_DATA___CampoAlteradoPeloUsuario || REGISTRO_CRIADO_USUARIO___CampoAlteradoPeloUsuario || REGISTRO_CRIADO_IP___CampoAlteradoPeloUsuario || REGISTRO_CRIADO_COMPUTADOR___CampoAlteradoPeloUsuario || REGISTRO_ATUALIZADO_DATA___CampoAlteradoPeloUsuario || REGISTRO_ATUALIZADO_USUARIO___CampoAlteradoPeloUsuario || REGISTRO_ATUALIZADO_IP___CampoAlteradoPeloUsuario || REGISTRO_ATUALIZADO_COMPUTADOR___CampoAlteradoPeloUsuario || REGISTRO_EXCLUIDO___CampoAlteradoPeloUsuario)
+                    return true;
+
+                return false;
+            }
+
+            public void MarcarRegistrosCarregadosDoBancoDeDados()
+            {
+                ValorNoBancoDeDados___ID = ValorEditadoPeloUsuario___ID;
+                ValorNoBancoDeDados___NOME_USUARIO = ValorEditadoPeloUsuario___NOME_USUARIO;
+                ValorNoBancoDeDados___NOME_PESSOA = ValorEditadoPeloUsuario___NOME_PESSOA;
+                ValorNoBancoDeDados___SENHA = ValorEditadoPeloUsuario___SENHA;
+                ValorNoBancoDeDados___ADMIN = ValorEditadoPeloUsuario___ADMIN;
+                ValorNoBancoDeDados___USUARIO_TOKEN = ValorEditadoPeloUsuario___USUARIO_TOKEN;
+                ValorNoBancoDeDados___USUARIO_TOKEN_VALIDADE = ValorEditadoPeloUsuario___USUARIO_TOKEN_VALIDADE;
+                ValorNoBancoDeDados___TOKEN = ValorEditadoPeloUsuario___TOKEN;
+                ValorNoBancoDeDados___REGISTRO_CRIADO_DATA = ValorEditadoPeloUsuario___REGISTRO_CRIADO_DATA;
+                ValorNoBancoDeDados___REGISTRO_CRIADO_USUARIO = ValorEditadoPeloUsuario___REGISTRO_CRIADO_USUARIO;
+                ValorNoBancoDeDados___REGISTRO_CRIADO_IP = ValorEditadoPeloUsuario___REGISTRO_CRIADO_IP;
+                ValorNoBancoDeDados___REGISTRO_CRIADO_COMPUTADOR = ValorEditadoPeloUsuario___REGISTRO_CRIADO_COMPUTADOR;
+                ValorNoBancoDeDados___REGISTRO_ATUALIZADO_DATA = ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_DATA;
+                ValorNoBancoDeDados___REGISTRO_ATUALIZADO_USUARIO = ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_USUARIO;
+                ValorNoBancoDeDados___REGISTRO_ATUALIZADO_IP = ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_IP;
+                ValorNoBancoDeDados___REGISTRO_ATUALIZADO_COMPUTADOR = ValorEditadoPeloUsuario___REGISTRO_ATUALIZADO_COMPUTADOR;
+                ValorNoBancoDeDados___REGISTRO_EXCLUIDO = ValorEditadoPeloUsuario___REGISTRO_EXCLUIDO;
+
+            }
+        }
+
+		#endregion Controle Interno dos Campos da Tabela
+    }
+
+    [DataContract]
+    public partial class USUARIO_VW : Flextech.Calculador.Rendimento.BancoDeDados.USUARIO_TB
+    {
+		#region Propriedades
+		
+
+    
+		#endregion Propriedades
+		
+        public override void InicializarPropriedadesComValoresPadrao(bool marcarRegistrosCarregadosDoBancoDeDados = true) 
+        {
+            base.InicializarPropriedadesComValoresPadrao(marcarRegistrosCarregadosDoBancoDeDados: marcarRegistrosCarregadosDoBancoDeDados);
+
+
+			
+			if (marcarRegistrosCarregadosDoBancoDeDados) MarcarRegistrosCarregadosDoBancoDeDados();
+		}
+    }
+}

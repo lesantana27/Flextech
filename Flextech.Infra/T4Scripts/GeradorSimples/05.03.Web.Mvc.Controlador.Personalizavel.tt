@@ -1,0 +1,92 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#@ parameter name="TABELA__NOME" type="System.String" #>
+<# 
+	CarregarVariaveisDaSolucao();
+
+    string nomeDaTabelaPascalCase = ToPascalCase(TABELA__NOME);
+
+	string arquivo = @"Controllers\" + nomeDaTabelaPascalCase + @"Controller.cs";
+
+#>
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: <#= arquivo #>
+Espaço de nome...: <#= VariaveisDaSolucao.EspacoDeNomeProjetoVisualizacaoWeb #>
+Classe...........: <#= nomeDaTabelaPascalCase #>Controller.cs
+Descrição........: Classe MVC Controller Web
+==================================================================================
+Criação..........: 22/01/2018 - Lessandro Santana
+Alteração........: 03/06/2019 - Lessandro Santana
+==================================================================================
+Gerado em........: <#= DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") #>
+==================================================================================
+*/
+
+using System.Web.Mvc;
+
+namespace <#= VariaveisDaSolucao.EspacoDeNomeProjetoVisualizacaoWeb #>.Controllers
+{
+    public partial class <#= nomeDaTabelaPascalCase #>Controller 
+    {
+        public ActionResult Indice(string usuarioToken = "", string parametro = "")
+        {
+            base.PreencherVariaveis(usuarioToken, parametro);
+            base.ValidarUsuarioToken(necessitaDePermissaoADMIN: true);
+            InicializarModelo();
+
+            this.<#= nomeDaTabelaPascalCase #>Modelo.<#= nomeDaTabelaPascalCase #>RegistroAtivo.SelecionarDaVisualizacao(<#= nomeDaTabelaPascalCase #>Modelo.<#= nomeDaTabelaPascalCase #>RegistroAtivo.Parametros);
+
+            return View(<#= nomeDaTabelaPascalCase #>Modelo);
+        }
+
+        public ActionResult Editar(string usuarioToken = "", string parametro = "")
+        {
+            base.PreencherVariaveis(usuarioToken, parametro);
+            base.ValidarUsuarioToken(necessitaDePermissaoADMIN: true);
+            InicializarModelo();
+
+            if (!string.IsNullOrEmpty(base.PARAMETRO))
+            {
+                this.<#= nomeDaTabelaPascalCase #>Modelo.<#= nomeDaTabelaPascalCase #>RegistroAtivo.SelecionarDaVisualizacaoPorToken(base.PARAMETRO);
+
+                if (this.<#= nomeDaTabelaPascalCase #>Modelo.ExisteErro)
+                {
+                    Session["ExisteErro"] = true;
+                    Session["TextoDaMensagemDeErro"] = <#= nomeDaTabelaPascalCase #>Modelo.TextoDaMensagemDeErro;
+
+                    Response.Redirect($"/{this.USUARIO_TOKEN}/Principal/Erro/");
+                }
+            }
+
+            return View(<#= nomeDaTabelaPascalCase #>Modelo);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar(FormCollection formCollection, string usuarioToken = "", string parametro = "")
+        {
+            base.PreencherVariaveis(usuarioToken, parametro);
+            base.ValidarUsuarioToken(necessitaDePermissaoADMIN: true);
+            InicializarModelo();
+
+            PreencherModeloComDadosDaTela(formCollection);
+
+            this.<#= nomeDaTabelaPascalCase #>Modelo.SalvarRegistroDaVisualizacao();
+
+            if (this.<#= nomeDaTabelaPascalCase #>Modelo.ExisteErro)
+            {
+                Session["ExisteErro"] = true;
+                Session["TextoDaMensagemDeErro"] = <#= nomeDaTabelaPascalCase #>Modelo.TextoDaMensagemDeErro;
+
+                return View(this.<#= nomeDaTabelaPascalCase #>Modelo);
+            }
+
+            return Redirect($"/{this.USUARIO_TOKEN}/<#= nomeDaTabelaPascalCase #>/Indice/");
+
+        }
+    }
+}

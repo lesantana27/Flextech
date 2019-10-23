@@ -1,0 +1,36 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#@ parameter name="TABELA__NOME" type="System.String" #>
+<# 
+	CarregarVariaveisDaSolucao();
+
+    string nomeDaTabelaPascalCase = ToPascalCase(TABELA__NOME);
+
+    string arquivo = @"Modelo\" + nomeDaTabelaPascalCase + @".cs";
+#>
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: <#= arquivo #>
+Espaço de nome...: <#= VariaveisDaSolucao.EspacoDeNomeProjetoVisualizacaoWeb #>
+Classe...........: <#= nomeDaTabelaPascalCase #>.cs
+Descrição........: Modelo de dados para a Web
+==================================================================================
+Criação..........: 22/01/2018 - Lessandro Santana
+Alteração........: 27/05/2019 - Lessandro Santana
+==================================================================================
+Gerado em........: <#= DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss") #>
+==================================================================================
+*/
+
+using System;
+
+namespace <#= VariaveisDaSolucao.EspacoDeNomeProjetoVisualizacaoWeb #>.Modelo
+{
+    public partial class <#= nomeDaTabelaPascalCase #>
+    {
+        // Colocar aqui a programação personalizada.
+    }
+}

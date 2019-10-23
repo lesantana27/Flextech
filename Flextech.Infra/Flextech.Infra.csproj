@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CE0C406-A6C2-488A-9539-AF7530004233}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Flextech.Infra</RootNamespace>
+    <AssemblyName>Flextech.Infra</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\NotificarPropriedadeBase.cs" />
+    <Compile Include="Base\ObjetoBase.cs" />
+    <Compile Include="Base\ObjetoObservavelBase.cs" />
+    <Compile Include="Base\RegistroAtivoBase.cs" />
+    <Compile Include="Base\RegistroBase.cs" />
+    <Compile Include="Extensoes\ByteExtensions.cs" />
+    <Compile Include="T4Scripts\Database\Column.cs" />
+    <Compile Include="T4Scripts\Database\Database.cs" />
+    <Compile Include="T4Scripts\Database\InformationSchema.cs" />
+    <Compile Include="T4Scripts\Database\SqlServerDatabase.cs" />
+    <Compile Include="T4Scripts\Database\Table.cs" />
+    <Compile Include="Utilitarios\Computador.cs" />
+    <Compile Include="Web\Base\ControllerBase.cs" />
+    <Compile Include="Web\Base\ModeloBase.cs" />
+    <Compile Include="Wpf\Base\ViewModelBase.cs" />
+    <Compile Include="ConexaoDeDados\SqlServer.cs" />
+    <Compile Include="Configuracoes\AppSettings.cs" />
+    <Compile Include="Estatico\BaseDeDados\SqlServer.cs" />
+    <Compile Include="Estatico\Sistema.cs" />
+    <Compile Include="Estatico\Usuario.cs" />
+    <Compile Include="Extensoes\DataTableExtensions.cs" />
+    <Compile Include="Extensoes\Enums.cs" />
+    <Compile Include="Extensoes\ObjectExtensions.cs" />
+    <Compile Include="Extensoes\StringExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrador\RegistradorBasico.cs" />
+    <Compile Include="Utilitarios\Arquivo.cs" />
+    <Compile Include="Utilitarios\Criptografia.cs" />
+    <Compile Include="Utilitarios\SerializadorXml.cs" />
+    <Compile Include="Wpf\Comandos\RelayCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Intefaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Anotações.txt" />
+    <Content Include="T4Scripts\GeradorSimples\05.01.Web.Mvc.Modelo.Personalizavel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>05.01.Web.Mvc.Modelo.Personalizavel.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.01.Web.Mvc.Modelo.Personalizavel.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>05.01.Web.Mvc.Modelo.Personalizavel.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.02.Web.Mvc.Modelo.Gerado.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>05.02.Web.Mvc.Modelo.Gerado.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.02.Web.Mvc.Modelo.Gerado.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>05.02.Web.Mvc.Modelo.Gerado.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.04.Web.Mvc.Controlador.Gerado.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>05.04.Web.Mvc.Controlador.Gerado.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.04.Web.Mvc.Controlador.Gerado.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>05.04.Web.Mvc.Controlador.Gerado.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.03.Web.Mvc.Controlador.Personalizavel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>05.03.Web.Mvc.Controlador.Personalizavel.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.03.Web.Mvc.Controlador.Personalizavel.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>05.03.Web.Mvc.Controlador.Personalizavel.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.05.Web.Mvc.Pagina.Indice.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>05.05.Web.Mvc.Pagina.Indice.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.05.Web.Mvc.Pagina.Indice.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>05.05.Web.Mvc.Pagina.Indice.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.06.Web.Mvc.Pagina.Editar.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>05.06.Web.Mvc.Pagina.Editar.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\05.06.Web.Mvc.Pagina.Editar.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>05.06.Web.Mvc.Pagina.Editar.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\99.Testes.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>99.Testes.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\99.Testes.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>99.Testes.tt</DependentUpon>
+    </Content>
+    <None Include="T4Scripts\Funcoes.ttinclude" />
+    <None Include="T4Scripts\Imports.ttinclude" />
+    <None Include="T4Scripts\Variaveis.ttinclude" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="T4Scripts\GeradorSimples\00.GerarTudo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>00.GerarTudo.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\00.GerarTudo.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>00.GerarTudo.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\02.01.BancoDeDados.Classes.Personalizavel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>02.01.BancoDeDados.Classes.Personalizavel.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\02.01.BancoDeDados.Classes.Personalizavel.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>02.01.BancoDeDados.Classes.Personalizavel.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\02.02.BancoDeDados.Classes.Gerado.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>02.02.BancoDeDados.Classes.Gerado.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\02.02.BancoDeDados.Classes.Gerado.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>02.02.BancoDeDados.Classes.Gerado.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.18.SqlServer.Tabelas.ProcedimentosArmazenados.sql">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>03.18.SqlServer.Tabelas.ProcedimentosArmazenados.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.18.SqlServer.Tabelas.ProcedimentosArmazenados.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>03.18.SqlServer.Tabelas.ProcedimentosArmazenados.sql</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.32.SqlServer.Visualizacoes.ProcedimentosArmazenados.sql">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>03.32.SqlServer.Visualizacoes.ProcedimentosArmazenados.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.32.SqlServer.Visualizacoes.ProcedimentosArmazenados.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>03.32.SqlServer.Visualizacoes.ProcedimentosArmazenados.sql</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.51.SqlServer.Manutencao.ProcedimentosArmazenados.sql">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>03.51.SqlServer.Manutencao.ProcedimentosArmazenados.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.51.SqlServer.Manutencao.ProcedimentosArmazenados.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>03.51.SqlServer.Manutencao.ProcedimentosArmazenados.sql</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.99.SqlServer.SqlCmd.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>03.99.SqlServer.SqlCmd.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\03.99.SqlServer.SqlCmd.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>03.99.SqlServer.SqlCmd.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\04.01.RegistroAtivo.Personalizavel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>04.01.RegistroAtivo.Personalizavel.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\04.01.RegistroAtivo.Personalizavel.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>04.01.RegistroAtivo.Personalizavel.tt</DependentUpon>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\04.02.RegistroAtivo.Gerado.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>04.02.RegistroAtivo.Gerado.txt</LastGenOutput>
+    </Content>
+    <Content Include="T4Scripts\GeradorSimples\04.02.RegistroAtivo.Gerado.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>04.02.RegistroAtivo.Gerado.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,86 @@
+﻿<#@ template language="C#" hostspecific="true" debug="True" #>
+<#@ assembly name="$(SolutionDir)Bin\Flextech.Infra.T4Scripts.dll" #>
+<#@ assembly name="$(SolutionDir)Bin\Flextech.Modelo.dll" #>
+<#@ include file="$(SolutionDir)Flextech.Infra.T4Scripts\Scripts\Functions.ttinclude" #>
+<#@ output extension=".txt" #>
+<#@ parameter name="ESQUEMA__NOME" type="System.String" #>
+<#@ parameter name="TABELA__NOME" type="System.String" #>
+<#
+	Flextech.Modelo.Metadados.EstruturaDeDados.VW_TABELA VW_TABELA;
+
+	if (!string.IsNullOrEmpty(ESQUEMA__NOME) && !string.IsNullOrEmpty(TABELA__NOME))
+    {
+		VW_TABELA = Flextech.Modelo.Metadados.Metadado.FLEXTECH.Esquema(ESQUEMA__NOME).Tabela(TABELA__NOME);
+#>
+@{
+    ViewBag.Title = "Editar <#= VW_TABELA.ESQUEMA__NOME #>.<#= VW_TABELA.NOME #>";
+
+    string linkBase = ViewBag.EnderecoBase + ViewBag.TokenUsuario + "/" + ViewBag.TokenEmpresa + "/" + ViewBag.Controller + "/Postar/" + ViewBag.Tabela + "/Editar/";
+    Flextech.Negocio.RegistroAtivo.FLEXTECH.<#= VW_TABELA.ESQUEMA__NOME #>.<#= VW_TABELA.NOME #> registroAtivo = new Flextech.Negocio.RegistroAtivo.FLEXTECH.<#= VW_TABELA.ESQUEMA__NOME #>.<#= VW_TABELA.NOME #>(ViewBag.NomeDoComputador, ViewBag.NomeDoUsuario, ViewBag.EnderecoIP);
+    Flextech.Modelo.BancoDeDados.FLEXTECH.<#= VW_TABELA.ESQUEMA__NOME #>.<#= VW_TABELA.NOME #>_VW registro = new Flextech.Modelo.BancoDeDados.FLEXTECH.<#= VW_TABELA.ESQUEMA__NOME #>.<#= VW_TABELA.NOME #>_VW();
+
+    if (ViewBag.Parametro.ToUpper() != "NOVO")
+    {
+        Guid token = new Guid("00000000-0000-0000-0000-000000000000");
+        Guid.TryParse(ViewBag.Parametro.ToString(), out token);
+
+        registro = registroAtivo.SelecionarDaVisualizacaoPorToken(token);
+    }
+}
+
+<h3>
+    Editar <#= VW_TABELA.ESQUEMA__NOME #>.<#= VW_TABELA.NOME #>
+    <small><#= VW_TABELA.DICA_DE_CONTEXTO #></small>
+</h3>
+<!-- START row-->
+<div class="row">
+    <div class="col-md-12">
+        <form action="@linkBase" data-parsley-validate="" novalidate="" class="form-horizontal" method="post">
+			@Html.AntiForgeryToken()
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Edi&ccedil;&atilde;o da tabela <#= VW_TABELA.ESQUEMA__NOME #>.<#= VW_TABELA.NOME #></div>
+                </div>
+                <div class="panel-body">
+<#	foreach (var itemVW_TABELA_CAMPO in VW_TABELA.Campos().Where(a => a.VISIVEL_NA_TELA == true).OrderBy(a => a.VISIVEL_NA_TELA_ORDEM_SEQUENCIAL))
+    {#>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><#= itemVW_TABELA_CAMPO.ROTULO_NORMAL #></label>
+                            <div class="col-sm-6">
+								@Html.Raw(Html.EditorHtml(tipo_objeto_visual: "<#= itemVW_TABELA_CAMPO.TIPO_OBJETO_VISUAL__NOME #>", tipo_primitivo_campo: "<#= itemVW_TABELA_CAMPO.TIPO_PRIMITIVO_CAMPO__NOME #>", nameAttribute: "<#= itemVW_TABELA_CAMPO.NOME.ToLower() #>", idAttribute: "<#= itemVW_TABELA_CAMPO.NOME.ToLower() #>", classAttribute: "", textOrValueAttribute: registro.<#= itemVW_TABELA_CAMPO.NOME #>.ToString(), othersAttributes: null))
+                            </div>
+                            <div class="col-sm-4">
+                                <span id="<#= itemVW_TABELA_CAMPO.NOME.ToLower() #>Erro"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+<#  }#>
+                </div>
+                <div class="panel-footer text-center">
+                    <button type="submit" class="btn btn-success">Salvar Dados</button>
+                </div>
+            </div>
+            <!-- END panel-->
+        </form>
+    </div>
+</div>
+<!-- END row-->
+
+
+@section Styles {
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/parsley")
+	@Scripts.Render("~/bundles/inputmask")
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(":input").inputmask();
+    });
+</script>
+}
+
+<#  }#> 

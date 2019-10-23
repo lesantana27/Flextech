@@ -1,0 +1,103 @@
+﻿<Window xmlns:dxprg="http://schemas.devexpress.com/winfx/2008/xaml/propertygrid" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Flextech.Replicador.Wpf.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:Flextech.Replicador.Wpf"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" xmlns:UserControls="clr-namespace:Flextech.Replicador.Wpf.Views.UserControls" xmlns:Replicador="clr-namespace:Flextech.Replicador;assembly=Flextech.Replicador" x:Class="Flextech.Replicador.Wpf.Views.Windows.PrincipalWindow"
+        mc:Ignorable="d"
+        Title="{Binding NomeDaTela}" Height="600" Width="1000" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <vm:PrincipalWindowViewModel />
+    </Window.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding CabecalhoGridCommand}" CommandParameter="{Binding ElementName=CabecalhoGrid}"/>
+            <i:InvokeCommandAction Command="{Binding TreeViewGridCreateCommand}" CommandParameter="{Binding ElementName=TreeViewGrid}"/>
+            <i:InvokeCommandAction Command="{Binding ConteudoGridCommand}" CommandParameter="{Binding ElementName=ConteudoGrid}"/>
+            <i:InvokeCommandAction Command="{Binding RodapeGridCommand}" CommandParameter="{Binding ElementName=RodapeGrid}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid x:Name="PrincipalGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Menu x:Name="MenuPrincipal" Grid.Row="0">
+            <Menu.DataContext>
+                <vm:MenuPrincipalViewModel/>
+            </Menu.DataContext>
+            <MenuItem Header="Arquivo">
+                <MenuItem Header="Novo" Command="{Binding NovoCommand, Mode=OneWay}"/>
+                <MenuItem Header="Abrir" Command="{Binding AbrirCommand, Mode=OneWay}"/>
+                <MenuItem Header="Salvar" Command="{Binding SalvarCommand, Mode=OneWay}"/>
+            </MenuItem>
+            <MenuItem Header="Configurações">
+                <CheckBox Content="Auto salvar"/>
+            </MenuItem>
+            <MenuItem Header="Sair"/>
+        </Menu>
+
+        <dx:DXTabControl Grid.Row="1">
+            <dx:DXTabItem Header="Campos Únicos">
+                <Grid Background="Transparent">
+                    <UserControls:CampoUnicoUC x:Name="CampoUnicoUC" />
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Modelo de dados">
+                <Grid Background="Transparent">
+                    <dx:DXTabControl>
+                        <dx:DXTabItem Header="Banco de Dados">
+                            <Grid Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label      Grid.Column="00"    Grid.Row="01"   HorizontalAlignment="Right"     VerticalAlignment="Top"     Width="200"     x:Name="label1"                     Content="Identificador:"                                        HorizontalContentAlignment="Right" />
+                                <TextBox    Grid.Column="02"    Grid.Row="01"   HorizontalAlignment="Left"      VerticalAlignment="Top"     Width="500"     x:Name="identificadorTextBox"       Text="{Binding Repositorio.BancoDeDados.Identificador}"         IsReadOnly="True"  />
+
+                                <Label      Grid.Column="00"    Grid.Row="02"   HorizontalAlignment="Right"     VerticalAlignment="Top"     Width="200"     x:Name="label2"                     Content="Nome do Banco de Dados:"                               HorizontalContentAlignment="Right" />
+                                <TextBox    Grid.Column="02"    Grid.Row="02"   HorizontalAlignment="Left"      VerticalAlignment="Top"     Width="500"     x:Name="nomeDoBancoDeDadosTextBox"  Text="{Binding Repositorio.BancoDeDados.NomeDoBancoDeDados}"    TextWrapping="Wrap"  />
+                            
+                            </Grid>
+                        </dx:DXTabItem>
+                        <dx:DXTabItem Header="Esquemas">
+                            <Grid Background="Transparent"/>
+                        </dx:DXTabItem>
+                        <dx:DXTabItem Header="Tabelas">
+                            <Grid Background="Transparent"/>
+                        </dx:DXTabItem>
+                        <dx:DXTabItem Header="Campos">
+                            <Grid Background="Transparent">
+                            </Grid>
+                        </dx:DXTabItem>
+                    </dx:DXTabControl>
+                </Grid>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Tipos de Objetos Visuais">
+                <Grid Background="Transparent"/>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Tipos Primitivos de Campos">
+                <Grid Background="Transparent"/>
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Gerador">
+                <Grid Background="Transparent"/>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
+
+    </Grid>
+</Window>

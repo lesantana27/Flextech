@@ -1,0 +1,10 @@
+﻿
+
+echo off
+echo ### INICIO ###
+chcp 65001
+sqlcmd -f 65001 -S .\SQL2017 -i "18.Tabelas.ProcedimentosArmazenados.sql"
+sqlcmd -f 65001 -S .\SQL2017 -i "32.Visualizacoes.ProcedimentosArmazenados.sql"
+sqlcmd -f 65001 -S .\SQL2017 -i "51.Manutencao.ProcedimentosArmazenados.sql"
+echo ### FIM ###
+echo on

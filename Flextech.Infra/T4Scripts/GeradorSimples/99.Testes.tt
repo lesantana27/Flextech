@@ -1,0 +1,49 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Flextech.Infra.dll" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#  
+	Engine engine = new Engine();
+	ITextTemplatingSession iTextTemplatingSession = new TextTemplatingSession();
+	ITextTemplatingSessionHost iTextTemplatingSessionHost = (ITextTemplatingSessionHost) this.Host;
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	iTextTemplatingSession["NOME_SOLUCAO"] = NomeSolucao.CALCULADOR_RENDIMENTO.ToString();
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	CarregarVariaveisDaSolucao();
+
+	Flextech.Infra.T4Scripts.Database.SqlServerDatabase DB = new Flextech.Infra.T4Scripts.Database.SqlServerDatabase(VariaveisDaSolucao.ConexaoBaseDeDados);
+
+    string nomeDaTabelaPascalCase; 
+    string nomeDoCampoPascalCase; 
+
+    foreach (Flextech.Infra.T4Scripts.Database.Table view in DB.Views)
+    {
+        nomeDaTabelaPascalCase = ToPascalCase(view.Name);
+#>
+
+
+#########################################################################################################################################
+<#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #>
+#########################################################################################################################################
+
+
+<#      foreach (Flextech.Infra.T4Scripts.Database.Column column in view.Columns)
+        { #>
+                        <DataGridTextColumn Header="<#= column.NameTreated #>" Binding="{Binding <#= column.Name #>}" Width="40" IsReadOnly="True" />
+<#      } #>
+
+
+#########################################################################################################################################
+<#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #> - <#= view.Name #>
+#########################################################################################################################################
+
+
+
+
+<#    }#>
+
+
+
+

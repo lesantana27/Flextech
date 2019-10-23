@@ -1,0 +1,139 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Flextech.Infra.dll" #>
+<#@ include  file="..\Funcoes.ttinclude" #>
+<#@ output extension=".txt" #>
+<#  
+	Engine engine = new Engine();
+	ITextTemplatingSession iTextTemplatingSession = new TextTemplatingSession();
+	ITextTemplatingSessionHost iTextTemplatingSessionHost = (ITextTemplatingSessionHost) this.Host;
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	iTextTemplatingSession["NOME_SOLUCAO"] = NomeSolucao.CALCULADOR_RENDIMENTO.ToString();
+	iTextTemplatingSessionHost.Session = iTextTemplatingSession;
+
+	CarregarVariaveisDaSolucao();
+
+	Flextech.Infra.T4Scripts.Database.SqlServerDatabase DB = new Flextech.Infra.T4Scripts.Database.SqlServerDatabase(VariaveisDaSolucao.ConexaoBaseDeDados);
+
+    string nomeDaTabelaPascalCase; 
+    string nomeDoCampoPascalCase; 
+
+    foreach (Flextech.Infra.T4Scripts.Database.Table table in DB.Tables)
+    {
+        nomeDaTabelaPascalCase = ToPascalCase(table.Name);
+#>
+
+
+#########################################################################################################################################
+<#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #>
+#########################################################################################################################################
+
+
+
+@model Flextech.Calculador.Rendimento.Web.Modelo.<#= nomeDaTabelaPascalCase #>
+@{
+    ViewBag.Title = "Índice";
+}
+
+<div class="content-heading">
+    <div>
+        <#= nomeDaTabelaPascalCase #>s
+        <small>Cadastro geral de <#= nomeDaTabelaPascalCase #>s</small>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Listagem de <#= nomeDaTabelaPascalCase #>s</div>
+            <div class="text-sm text-right">
+                <a class="btn btn-labeled btn-primary" href="/@ViewBag.USUARIO_TOKEN/<#= nomeDaTabelaPascalCase #>/Editar/"><span class="btn-label"><i class="fa fa-plus"></i></span>Novo <#= nomeDaTabelaPascalCase #></a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped my-4 w-100" id="datatable2">
+                <thead>
+                    <tr>
+                        <th>ID #</th>
+<#      foreach (Flextech.Infra.T4Scripts.Database.Column column in table.Columns)
+        {
+		    if (column.Name == "ID")                                { continue; }
+            if (column.Name == "TOKEN")                             { continue; }
+            if (column.Name == "REGISTRO_CRIADO_DATA")              { continue; }
+            if (column.Name == "REGISTRO_CRIADO_USUARIO")           { continue; }
+            if (column.Name == "REGISTRO_CRIADO_IP")                { continue; }
+            if (column.Name == "REGISTRO_CRIADO_COMPUTADOR")        { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_DATA")          { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_USUARIO")       { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_IP")            { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_COMPUTADOR")    { continue; }
+            if (column.Name == "REGISTRO_EXCLUIDO")                 { continue; } #>
+                        <th><#= ToPascalCase(column.Name) #></th>
+<#      } #>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.<#= nomeDaTabelaPascalCase #>RegistroAtivo.ColecaoDeRegistroDaVisualizacao)
+                    {
+                    <tr>
+                        <td>@item.ID</td>
+<#      foreach (Flextech.Infra.T4Scripts.Database.Column column in table.Columns)
+        {
+		    if (column.Name == "ID")                                { continue; }
+            if (column.Name == "TOKEN")                             { continue; }
+            if (column.Name == "REGISTRO_CRIADO_DATA")              { continue; }
+            if (column.Name == "REGISTRO_CRIADO_USUARIO")           { continue; }
+            if (column.Name == "REGISTRO_CRIADO_IP")                { continue; }
+            if (column.Name == "REGISTRO_CRIADO_COMPUTADOR")        { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_DATA")          { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_USUARIO")       { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_IP")            { continue; }
+            if (column.Name == "REGISTRO_ATUALIZADO_COMPUTADOR")    { continue; }
+            if (column.Name == "REGISTRO_EXCLUIDO")                 { continue; } #>
+                        <td>@item.<#= column.Name #></td>
+<#      } #>
+                        <td class="text-right">
+                            <a class="btn btn-success" href="/@ViewBag.USUARIO_TOKEN/<#= nomeDaTabelaPascalCase #>/Editar/@item.TOKEN/"><i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/vendor/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-keytable-bs/css/keyTable.bootstrap.css">
+    <link rel="stylesheet" href="~/vendor/datatables.net-responsive-bs/css/responsive.bootstrap.css">
+}
+
+@section Scripts {
+    <script src="@Scripts.Url("~/Vendor/datatables.net/js/jquery.dataTables.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-bs4/js/dataTables.bootstrap4.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/dataTables.buttons.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons-bs/js/buttons.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.colVis.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.flash.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.html5.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-buttons/js/buttons.print.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-keytable/js/dataTables.keyTable.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive/js/dataTables.responsive.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/datatables.net-responsive-bs/js/responsive.bootstrap.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/jszip/dist/jszip.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/pdfmake.js")"></script>
+    <script src="@Scripts.Url("~/Vendor/pdfmake/build/vfs_fonts.js")"></script>
+}
+
+
+#########################################################################################################################################
+<#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #> - <#= table.Name #>
+#########################################################################################################################################
+
+<#    }#>
+
+
+
+

@@ -1,0 +1,158 @@
+﻿
+
+/*
+==================================================================================
+Solução..........: Flextech
+Projeto..........: Modelo
+Arquivo..........: BancoDeDadosScripts\Gerado\51.Manutencao.ProcedimentosArmazenados.sql
+Descrição........: Script de criação dos procedimentos armazenados para a 
+                   manutenção da base de dados
+==================================================================================
+Criação..........: 07/03/2018 - Lessandro Santana
+Alteração........: 10/05/2018 - Lessandro Santana
+==================================================================================
+Gerado em........: 10/05/2019 16:47:37
+==================================================================================
+*/
+
+print '';
+print 'Script...........: 51.Manutencao.ProcedimentosArmazenados.sql';
+print 'Inicio...........: ' + CONVERT(VARCHAR, GETDATE(), 121);
+
+
+USE [CALCULADOR_RENDIMENTO];
+GO
+
+
+-- ##################################################################################################################################################
+-- ##################################################################################################################################################
+-- ##################################################################################################################################################
+
+
+SET ANSI_NULLS ON;
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MANUTENCAO__SHRINKDATABASE]') AND type in (N'P', N'PC'))
+BEGIN
+	DROP PROCEDURE [dbo].[MANUTENCAO__SHRINKDATABASE];
+END;
+GO
+
+
+CREATE PROCEDURE [dbo].[MANUTENCAO__SHRINKDATABASE]
+	@DATABASE_NAME NVARCHAR(128) = NULL,
+	@RECOVERY_FULL BIT = 0
+AS
+BEGIN
+	
+	IF (@DATABASE_NAME IS NULL) 
+	BEGIN
+		SET @DATABASE_NAME = DB_NAME();
+	END;
+
+    IF (@RECOVERY_FULL = 0 AND (SELECT recovery_model_desc FROM sys.databases WHERE name = @DATABASE_NAME) = 'FULL')
+    BEGIN
+        SET @RECOVERY_FULL = 1;
+    END;
+
+    EXEC ('ALTER DATABASE [' + @DATABASE_NAME + '] SET RECOVERY SIMPLE');
+	
+	DBCC SHRINKDATABASE(@DATABASE_NAME); 
+	
+	IF (@RECOVERY_FULL = 1)
+	BEGIN
+		EXEC ('ALTER DATABASE [' + @DATABASE_NAME + '] SET RECOVERY FULL');
+	END;
+END;
+GO
+
+
+-- #########################################################################################################################################
+-- #########################################################################################################################################
+-- #########################################################################################################################################
+
+
+SET ANSI_NULLS ON;
+GO
+
+SET QUOTED_IDENTIFIER ON;
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MANUTENCAO__BACKUP]') AND type in (N'P', N'PC'))
+BEGIN
+	DROP PROCEDURE [dbo].[MANUTENCAO__BACKUP];
+END;
+GO
+
+CREATE PROCEDURE [dbo].[MANUTENCAO__BACKUP]
+	@DATABASE_NAME		NVARCHAR(128) = NULL,
+	@NOME_ARQUIVO		VARCHAR(1000) = '',
+	@DIR_PRINCIPAL		VARCHAR(1000) = 'C:\SQLServerBackups\',
+	@BKP_GOOGLE_DRIVE	BIT = 0,
+	@DIR_GOOGLE_DRIVE	VARCHAR(1000) = 'C:\GOOGLE_DRIVE\SQLServerBackups\',
+	@BKP_ONE_DRIVE		BIT = 0,
+	@DIR_ONE_DRIVE		VARCHAR(1000) = 'C:\ONE_DRIVE\SQLServerBackups\',
+	@COMPRIMIR			BIT = 0
+AS
+BEGIN
+	declare @SQL					varchar(8000)	= '';
+	declare @DATA_ATUAL				varchar(20)		= '';
+	declare @MIRROR_GOOGLE_DRIVE	varchar(1000)	= '';
+	declare @MIRROR_ONE_DRIVE		varchar(1000)	= '';
+
+	IF (@DATABASE_NAME IS NULL) 
+	BEGIN
+		SET @DATABASE_NAME = DB_NAME();
+	END;
+
+	set		@DATA_ATUAL = @DATA_ATUAL +				CONVERT(VARCHAR, DATEPART(YEAR,		GETDATE()))		+ '.'
+	set		@DATA_ATUAL = @DATA_ATUAL + RIGHT('0' + CONVERT(VARCHAR, DATEPART(MONTH,	GETDATE())), 2)	+ '.'
+	set		@DATA_ATUAL = @DATA_ATUAL + RIGHT('0' + CONVERT(VARCHAR, DATEPART(DAY,		GETDATE())), 2)	+ '.'
+	set		@DATA_ATUAL = @DATA_ATUAL + RIGHT('0' + CONVERT(VARCHAR, DATEPART(HOUR,		GETDATE())), 2)	+ '.'
+	set		@DATA_ATUAL = @DATA_ATUAL + RIGHT('0' + CONVERT(VARCHAR, DATEPART(MINUTE,	GETDATE())), 2)	+ '.'
+	set		@DATA_ATUAL = @DATA_ATUAL + RIGHT('0' + CONVERT(VARCHAR, DATEPART(SECOND,	GETDATE())), 2)
+
+	if @NOME_ARQUIVO = ''			begin	set @NOME_ARQUIVO = @DATABASE_NAME + '.' + @DATA_ATUAL		+ '.bak';	end
+	else							begin	set @NOME_ARQUIVO = @DATABASE_NAME + '.' + @NOME_ARQUIVO	+ '.bak';	end;
+
+	if @BKP_GOOGLE_DRIVE = 1		begin	set	@MIRROR_GOOGLE_DRIVE =	' MIRROR TO DISK = ''' + @DIR_GOOGLE_DRIVE + @NOME_ARQUIVO	+ '';	end;
+	
+	if @BKP_ONE_DRIVE = 1			begin	set	@MIRROR_ONE_DRIVE =		' MIRROR TO DISK = ''' + @DIR_ONE_DRIVE + @NOME_ARQUIVO		+ '';	end;
+
+
+	set	@SQL = @SQL + ' BACKUP DATABASE [' + @DATABASE_NAME + ']';
+	set	@SQL = @SQL + ' TO DISK = ''' + @DIR_PRINCIPAL + @NOME_ARQUIVO + '''';
+	set	@SQL = @SQL + @MIRROR_GOOGLE_DRIVE;
+	set	@SQL = @SQL + @MIRROR_ONE_DRIVE;
+	set	@SQL = @SQL + ' WITH STATS = 5, FORMAT' 
+	
+	IF (@COMPRIMIR = 1) set	@SQL = @SQL + ', COMPRESSION ';
+	
+	set	@SQL = @SQL + ';' 
+
+	print 'NOME_ARQUIVO.....: ' + @NOME_ARQUIVO;
+	print 'DIR_PRINCIPAL....: ' + @DIR_PRINCIPAL;
+	if (@BKP_GOOGLE_DRIVE = 1)	begin print 'GOOGLE_DRIVE.....: SIM - ' + @DIR_GOOGLE_DRIVE;	end		else	begin print 'GOOGLE_DRIVE.....: NÃO' end;
+	if (@BKP_ONE_DRIVE = 1)		begin print 'ONE_DRIVE........: SIM - ' + @DIR_ONE_DRIVE;		end		else	begin print 'ONE_DRIVE........: NÃO' end;
+	print '';
+	print '@SQL: ' + @SQL;
+	print '';
+
+	exec(@SQL);
+
+END;
+GO
+
+
+-- ##################################################################################################################################################
+-- ##################################################################################################################################################
+-- ##################################################################################################################################################
+
+
+print 'Fim..............: ' + CONVERT(VARCHAR, GETDATE(), 121);
+print '--------------------------------------------------------------------------------';
+print '';
